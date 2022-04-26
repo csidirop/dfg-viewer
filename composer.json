@@ -1,5 +1,5 @@
 {
-  "name": "csidirop/dfgviewer",
+  "name": "csidirop/dfg-viewer",
   "type": "typo3-cms-extension",
   "description": "Remote resources navigator for digital libraries. Reads METS/MODS and METS/TEI via OAI-PMH..",
   "homepage": "https://github.com/slub/dfg-viewer",
@@ -38,12 +38,12 @@
   "license": "GPL-3.0-or-later",
   "require": {
     "typo3/cms-core": "~9.5.26",
-    "csidirop/presentation": "dev-3.3.4-ocr-test-04-26",
+    "csidirop/kitodo-presentation": "dev-3.3.4-ocr-test-04-26",
     "slub/slub-digitalcollections": "^2.0"
   },
   "autoload": {
     "psr-4": {
-      "Slub\\Dfgviewer\\": "Classes/"
+      "csidirop\\Dfgviewer\\": "Classes/"
     }
   },
   "extra": {
