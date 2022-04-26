@@ -232,8 +232,41 @@
               </f:else>
             </f:if>
           </li>
-          <f:if condition="{dc:xpath(xpath:'(//mets:fileSec/mets:fileGrp[@USE=\'FULLTEXT\']/mets:file[1]/mets:FLocat/@xlink:href)[1]')}">
+          <!----- Fulltext functionality: ----->
+          <f:if condition="{dc:xpath(xpath:'(//mets:fileSec/mets:fileGrp[@USE=\'FULLTEXT\']/mets:file[1]/mets:FLocat/@xlink:href)[1]')}"> <!-- tmp disable -->
+            <!-- <style>
+              .ocr-page, .ocr-book{
+                border: 0px;
+                border-radius: 20px;
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+                transition: all .18s ease-in-out;
+                position: relative;
+                padding: 0;
+                margin: 0 4px;
+                display: inline-block;
+              }
+              .ocr-page {
+                background: #fff url("typo3conf/ext/dfgviewer/Resources/Public/Images/PageOCR.svg") no-repeat 0 0 !important;
+                background-position: 0 0;
+              }
+              .ocr-page:hover, .ocr-book:hover {
+                cursor:pointer;
+                transform:scale(1.2);
+                transition: all .18s ease-in-out;
+              }
+              .ocr-book {
+                background: #fff url("typo3conf/ext/dfgviewer/Resources/Public/Images/BookOCR.svg") no-repeat 0 0 !important;
+                background-position: 0 0;
+              }
+              .ocr-create input {
+                display:none;
+              }
+            </style>	 -->
+				 	<!-- Fulltext button behaviour: active or not (but always visible) -->
             <li class="fulltext">
+              <!-- <script>"alert('DFGViewer: fulltext?')"</script>   --> <!--  anm.: geht nicht -->
               <f:if condition="{gp-double} == 1">
                 <f:then>
                   <span class="select switchoff" id="tx-dlf-tools-fulltext" title="{f:translate(key:'fulltext.no_fulltext_double', extensionName:'dfgviewer')}"><f:translate key='fulltext.no_fulltext_double' extensionName='dfgviewer' /></span>
@@ -251,6 +284,11 @@
               </f:if>
             </li>
           </f:if>
+          <!--  Test Button -->
+          <!-- <li class="testBtn">
+            <span class="testBtnClass" id="testBtnId" title="Test Button"> <script>"alert('btn clicked')"</script>  </span>
+          </li> -->
+          <!-- non-Fulltext: Pagegrid -->
           <li class="grid">
             <f:if condition="{dc:xpath(xpath:'(//mets:fileSec/mets:fileGrp[@USE=\'THUMBS\']/mets:file[1]/mets:FLocat/@xlink:href)[1]')}">
               <f:then>
@@ -268,6 +306,32 @@
               </f:else>
             </f:if>
           </li>
+          <!-- non-Fulltext end-->
+          <!-- Fulltext: OCR on demand buttons -->
+          <f:if condition="{gp-pagegrid} == 0 and {gp-double} == 0">
+            <li class="ocr-page ocr-create" id="tx-dlf-create-form">
+              <a onclick="document.getElementById('tx-dlf-fulltext-create-page').submit()">
+                <!--Create Page OCR-->
+                <f:translate key='fulltext.create_ocr_page' extensionName='dfgviewer'/>
+                <f:form id="tx-dlf-fulltext-create-page" pageUid="{kitodoPageView}"  action="create" name="request" method="post" additionalParams="{tx_dlf:{page:'{gp-page}', id:'{gp-id}'}}" >
+                  <f:form.hidden property="create" value="1"/>
+                  <f:form.hidden property="type" value="page"/>
+                  <f:form.submit/>
+                </f:form>
+              </a>
+            </li>
+            <li class="ocr-book ocr-create" id="tx-dlf-create-form">
+              <a onclick="document.getElementById('tx-dlf-fulltext-create-book').submit()">
+                <!--Create Book OCR-->
+                <f:translate key='fulltext.create_ocr_book' extensionName='dfgviewer'/>
+                <f:form id="tx-dlf-fulltext-create-book" pageUid="{kitodoPageView}"  action="create" name="request" method="post" additionalParams="{tx_dlf:{page:'{gp-page}', id:'{gp-id}'}}" >
+                  <f:form.hidden property="create" value="1"/>
+                  <f:form.hidden property="type" value="book"/>
+                  <f:form.submit/>
+                </f:form>
+              </a>
+            </li>
+          </f:if>
           <f:if condition="{dc:xpath(xpath:'//mets:amdSec/mets:digiprovMD/mets:mdWrap[@OTHERMDTYPE=\'DVLINKS\']/mets:xmlData/dv:links/dv:sru')}">
             <f:then>
               <li class="submenu search">
