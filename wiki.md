@@ -164,7 +164,7 @@ Wobei ggfs. die id anhand der UID angepasst werden muss.
 #### TSConfig anpassen
 Im Backend _Web -> Page -> DFG-Viewer -> Viewer -> Eigenschaften bearbeiten -> Resources_ 
 1. Die TypoScript Configuration um die Extension dfgviewer aus dem rechten Feld ergänzen
-2. Die Page TSConfig um die Zeile 'TCEMAIN.permissions.groupid = <UID>' wobei <UID> die Id aus dem vorherigen Schritt ist.
+2. Die Page TSConfig um die Zeile 'TCEMAIN.permissions.groupid = UID' wobei UID die Id aus dem vorherigen Schritt ist.
 
 #### Extension settings anpassen
 Im Backend _Admin Tools -> Settings -> Extension Configuration -> dlf_ lassen sich Einstellungen zu Kitodo.Presentation eisntellen. Unter dem Tab _Fulltextocr_ müssen nun alle Einstellungen überprüft und ggfs. angepasst werden. 
@@ -183,6 +183,13 @@ Beispielsweiße:
 #### Kurzinstallation Tesseract v5
     sudo apt install tesseract
 Unter Ubunutu 20.04 wird aktuell noch die veraltete Version 4 gelistet. Um die neuste Version zu installieren muss folgendes [Repo](https://ubuntuhandbook.org/index.php/2021/12/install-tesseract-ocr-5-ubuntu/) hinzugefügt werden: 'sudo add-apt-repository ppa:alex-p/tesseract-ocr5' .
+Um gute OCR Ergebnisse mit historischen Drucken zu erreichen empfiehlt es sich eine dafür spezialisiertes Model zu installieren. Aktuelle Modelle kann man bei der [Uni Mannheim](https://ub-backup.bib.uni-mannheim.de/~stweil/tesstrain/frak2021/tessdata_fast/) bekommen. Diese legt man untert '/usr/share/tesseract-ocr/5/tessdata/' ab.
+
+    cd /usr/share/tesseract-ocr/5/tessdata/
+    wget https://ub-backup.bib.uni-mannheim.de/~stweil/tesstrain/frak2021/tessdata_fast/frak2021_1.069.traineddata
+     
+Mit 'tesseract --list-langs' kann man überprüfen welche Modelle vorhanden sind.
+    
     
 
 ### Test
