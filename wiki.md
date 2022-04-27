@@ -179,7 +179,11 @@ Beispielsweiße:
   - fulltextocr.ocrOptions = alto
   - fulltextocr.ocrDelay = 10
   - fulltextocr.ocrLock = true / Haken setzen
-  
+
+#### Kurzinstallation Tesseract v5
+    sudo apt install tesseract
+Unter Ubunutu 20.04 wird aktuell noch die veraltete Version 4 gelistet. Um die neuste Version zu installieren muss folgendes [Repo](https://ubuntuhandbook.org/index.php/2021/12/install-tesseract-ocr-5-ubuntu/) hinzugefügt werden: 'sudo add-apt-repository ppa:alex-p/tesseract-ocr5' .
+    
 
 ### Test
 Der Aufruf folgender Seite 
