@@ -145,7 +145,7 @@ Als nächstes müssen die ID Konstanten des DFG-Viewers angepasst werden:
 4. Unter der Einstellung _config.kitodoPageView_ muss nun in dem vorgesehenen Feld die _Uid_ eingetragen werden.
 
 #### Eingabefeld hinzufügen
-Im Backend einfach _Web -> Page -> DFG-Viewer_ auf den Button "+ Content" klicken und ein HTML Objekt hinzufügen. Anschließend muss man folgenden Code eintragen:
+Im Backend unter _Web -> Page -> DFG-Viewer_ auf den Button "+ Content" klicken und ein HTML Objekt hinzufügen. Anschließend muss folgender Code eintragen werden:
 
     <div class="abstract">
 	<form method="get" action="index.php">
@@ -164,7 +164,7 @@ Wobei ggfs. die ID anhand der UID angepasst werden muss.
 #### TSConfig anpassen
 Im Backend _Web -> Page -> DFG-Viewer -> Viewer -> Eigenschaften bearbeiten -> Resources_ 
 1. Die TypoScript Configuration um die Extension dfgviewer aus dem rechten Feld ergänzen
-2. Die Page TSConfig um die Zeile `TCEMAIN.permissions.groupid = UID` wobei UID die Id aus dem vorherigen Schritt ist.
+2. Die Page TSConfig um die Zeile `TCEMAIN.permissions.groupid = UID` ergänzen, wobei UID die Id aus dem vorherigen Schritt ist.
 
 #### Extension settings anpassen
 Im Backend unter _Admin Tools -> Settings -> Extension Configuration -> dlf_ lassen sich Einstellungen zu Kitodo.Presentation bearbeiten. Unter dem Tab _Fulltextocr_ müssen nun alle Einstellungen überprüft und ggfs. angepasst werden. 
