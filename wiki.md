@@ -123,7 +123,7 @@ Unter _Backend -> Admin Tools -> Settings -> Configure Installation-Wide Options
 3. Änderungen durch den Button "Write cofiguration" schreiben  
 
 Weg 2: direkt
-Im Installationsverzeichnis (z. B. `/var/www/dfgviewer/public/typo3conf`) in die `LocalConfigurartion.php` folgende Werte in die Struktur einfügen:
+Im Installationsverzeichnis muss man (z. B. `/var/www/dfgviewer/public/typo3conf`) in die `LocalConfigurartion.php` folgende Werte in die Struktur einfügen:
 
     'FE' => [
       'cacheHash' => [
@@ -139,10 +139,10 @@ Wobei darauf geachtet werden muss, dass bereits vorhandene Schlüssel abgeänder
 
 #### ID Fix
 Als nächstes müssen die ID Konstanten des DFG-Viewers angepasst werden: 
-1. Zunächst muss man die _Uid_ der Seite herausfinden. Diese findet man unter: _Backend_ -> _Web_ -> _Template_ -> _DFG Viewer_ -> Right-Click on _Viewer_ -> _Info_
-2. Die _Uid_ muss man sich nun kopieren bzw. merken.
+1. Zunächst muss man die _UID_ der Seite herausfinden. Diese findet man unter: _Backend_ -> _Web_ -> _Template_ -> _DFG Viewer_ -> Right-Click on _Viewer_ -> _Info_
+2. Die _UID_ muss man sich nun kopieren bzw. merken.
 3. Nun muss man in die Einstellungen für den DFG-Viewer. Diese findet man unter: _DFG Viewer_ -> _Constant Editor_ (im Drop-Down-Menü (links/mittig) auswählbar) -> _Category: PLUGIN.TX_DFGVIEWER_
-4. Unter der Einstellung _config.kitodoPageView_ muss nun in dem vorgesehenen Feld die _Uid_ eingetragen werden.
+4. Unter der Einstellung _config.kitodoPageView_ muss nun in dem vorgesehenen Feld die _UID_ eingetragen werden.
 
 #### Eingabefeld hinzufügen
 Im Backend unter _Web -> Page -> DFG-Viewer_ auf den Button "+ Content" klicken und ein HTML Objekt hinzufügen. Anschließend muss folgender Code eintragen werden:
@@ -164,7 +164,7 @@ Wobei ggfs. die ID anhand der UID angepasst werden muss.
 #### TSConfig anpassen
 Im Backend _Web -> Page -> DFG-Viewer -> Viewer -> Eigenschaften bearbeiten -> Resources_ 
 1. Die TypoScript Configuration um die Extension dfgviewer aus dem rechten Feld ergänzen
-2. Die Page TSConfig um die Zeile `TCEMAIN.permissions.groupid = UID` ergänzen, wobei UID die Id aus dem vorherigen Schritt ist.
+2. Die Page TSConfig um die Zeile `TCEMAIN.permissions.groupid = UID` ergänzen, wobei UID die ID aus dem vorherigen Schritt ist.
 
 #### Extension settings anpassen
 Im Backend unter _Admin Tools -> Settings -> Extension Configuration -> dlf_ lassen sich Einstellungen zu Kitodo.Presentation bearbeiten. Unter dem Tab _Fulltextocr_ müssen nun alle Einstellungen überprüft und ggfs. angepasst werden. 
@@ -180,12 +180,12 @@ Beispielsweise:
   - fulltextocr.ocrDelay = 10
   - fulltextocr.ocrLock = true / Haken setzen
 
-Falls die Arbeitsverzeichnisse noch nicht vorhanden sind, müssen diese noch in `/var/www/dfgviewer/public/fileadmin` angelegt werden und mit den entsprechenden Lese- und Schreibrechten für den `www-data`-User versehen werden.
+Falls die Arbeitsverzeichnisse noch nicht vorhanden sind, müssen diese in `/var/www/dfgviewer/public/fileadmin` angelegt werden und mit den entsprechenden Lese- und Schreibrechten für den `www-data`-User versehen werden.
 
 #### Kurzinstallation Tesseract v5
     sudo apt install tesseract
-Unter Ubunutu 20.04 wird aktuell noch die veraltete Version 4 gelistet. Um die neuste Version zu installieren muss folgendes [Repo](https://ubuntuhandbook.org/index.php/2021/12/install-tesseract-ocr-5-ubuntu/) hinzugefügt werden: `sudo add-apt-repository ppa:alex-p/tesseract-ocr5` .
-Um gute OCR Ergebnisse mit historischen Drucken zu erreichen, empfiehlt es sich eine dafür spezialisiertes Model zu installieren. Aktuelle Modelle findet man bei der [Universität Mannheim](https://ub-backup.bib.uni-mannheim.de/~stweil/tesstrain/frak2021/tessdata_fast/). Diese legt man unter `/usr/share/tesseract-ocr/5/tessdata/` ab.
+Unter Ubunutu 20.04 wird aktuell noch die veraltete Version 4 gelistet. Um die neuste Version zu installieren, muss folgendes [Repo](https://ubuntuhandbook.org/index.php/2021/12/install-tesseract-ocr-5-ubuntu/) hinzugefügt werden: `sudo add-apt-repository ppa:alex-p/tesseract-ocr5` .
+Um gute OCR Ergebnisse mit historischen Drucken zu erreichen, empfiehlt es sich ein dafür spezialisiertes Modell zu installieren. Aktuelle Modelle findet man bei der [Universität Mannheim](https://ub-backup.bib.uni-mannheim.de/~stweil/tesstrain/frak2021/tessdata_fast/). Diese legt man unter `/usr/share/tesseract-ocr/5/tessdata/` ab.
 
     cd /usr/share/tesseract-ocr/5/tessdata/
     wget https://ub-backup.bib.uni-mannheim.de/~stweil/tesstrain/frak2021/tessdata_fast/frak2021_1.069.traineddata
@@ -196,7 +196,7 @@ Mit `tesseract --list-langs` kann geprüft werden, welche Modelle vorhanden sind
 #### Allgemein
 Der Aufruf folgender Seite 
 http://localhost/index.php?id=2&tx_dlf%5Bpage%5D=1&tx_dlf%5Bdouble%5D=0&tx_dlf%5Bid%5D=https%3A%2F%2Fdigital.slub-dresden.de%2Foai%2F%3Fverb%3DGetRecord%26metadataPrefix%3Dmets%26identifier%3Doai%3Ade%3Aslub-dresden%3Adb%3Aid-263566811&tx_dlf%5Bpagegrid%5D=1&cHash=3deb716062d5ea61c9640e5c5c5711dd 
-sollte die Übersicht eines Digitalisates der SLUB Dresden öffnen. (Ggfs. muss die ID im Link angepasst werden und auf die Uid des Viewers gesetzt werden.)
+sollte die Übersicht eines Digitalisates der SLUB Dresden öffnen. (Ggfs. muss die ID im Link angepasst werden und auf die UID des Viewers gesetzt werden.)
 
 Weitere Information und Beispiele findet man [hier](https://extensions.typo3.org/extension/dfgviewer/).
 
@@ -208,7 +208,7 @@ Die Stammseite http://localhost/index.php?id=1 aufrufen und im Eingabefeld den L
 (* Volltext ist im falschen Format und wird deshalb nicht erkannt.)
 
 #### OCR-On-Demand
-Um die Volltexterzeugung zu testen, benötigt man ein Dokument ohne vorhandenen Volltext. Wird so ein Dokument im DFG-Viewer dargestellt, werden zwei zusätzliche Buttons angezeigt, mit denen man OCR für die aktuelle Seite oder das ganze Buch starten kann. Nach einem reload der Seite sollte der Volltext vorhanden sein. Sollte er nicht angezeigt werden, kann man schauen ob er im Verzeichnis `/var/www/dfgviewer/public/fileadmin/fulltextFolder/logXXXXX/`angelegt wurde.
+Um die Volltexterzeugung zu testen, benötigt man ein Dokument ohne vorhandenen Volltext. Wird so ein Dokument im DFG-Viewer dargestellt, werden zwei zusätzliche Buttons angezeigt, mit denen man OCR für die aktuelle Seite oder das ganze Buch erstellen kann. Nach einem Reload der Seite sollte der Volltext vorhanden sein. Sollte er nicht angezeigt werden, kann man nachsehen,  ob er im Verzeichnis `/var/www/dfgviewer/public/fileadmin/fulltextFolder/logXXXXX/`angelegt wurde.
 
 ## Links
 
