@@ -169,16 +169,18 @@ Im Backend _Web -> Page -> DFG-Viewer -> Viewer -> Eigenschaften bearbeiten -> R
 #### Extension settings anpassen
 Im Backend _Admin Tools -> Settings -> Extension Configuration -> dlf_ lassen sich Einstellungen zu Kitodo.Presentation eisntellen. Unter dem Tab _Fulltextocr_ müssen nun alle Einstellungen überprüft und ggfs. angepasst werden. 
 
-Beispielsweiße:
+Beispielsweise:
   - fulltextocr.fulltextFolder = fulltextFolder
-  - fulltextocr.fulltextTempFolder = _temp_/fulltextTempFolder
-  - fulltextocr.fulltextImagesFolder = _temp_/imagesTempFolder
+  - fulltextocr.fulltextTempFolder = \_temp_/fulltextTempFolder
+  - fulltextocr.fulltextImagesFolder = \_temp_/imagesTempFolder
   - fulltextocr.ocrDummy = true / Haken setzen
   - fulltextocr.ocrEngine = tesseract
   - fulltextocr.ocrLanguages = frak2021_1.069
   - fulltextocr.ocrOptions = alto
   - fulltextocr.ocrDelay = 10
   - fulltextocr.ocrLock = true / Haken setzen
+
+Falls die Arbeitsverzeichnisse noch nicht vorhanden sind, müssen diese noch in `/var/www/dfgviewer/public/fileadmin` angelegt werden und mit entsprechenden Lese- und Schreibrechten für den `www-data`-User versehen werden.
 
 #### Kurzinstallation Tesseract v5
     sudo apt install tesseract
@@ -204,6 +206,9 @@ Die Stammseite http://localhost/index.php?id=1 aufrufen und im Eingabefeld den L
   - Volltext nicht vorhanden*: https://digi.bib.uni-mannheim.de/fileadmin/vl/ubmaosi/59087/59087.xml
 
 (* Volltext ist im falschen Format und deshalb nicht erkannt)
+
+#### OCR-On-Demand
+Um die Volltexterzeugung zu testen, benötigt man ein Dokument ohne vorhandenen Volltext. Wird so ein Dokument im DFG-Viewer dargestellt, werden zwei zusätzliche Buttons angezeigt, mit denen man OCR für die aktuelle Seite oder das ganze Buch starten kann. Nach einem reload der Seite sollte der Volltext vorhanden sein. Sollte er nicht angezeigt werden, kann man schauen ob er im Verzeichnis `/var/www/dfgviewer/public/fileadmin/fulltextFolder/logXXXXX/`angelegt wurde.
 
 ## Links
 
