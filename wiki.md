@@ -98,7 +98,7 @@ Anschließend installiert man die TYPO3-Extension [DFG-Viewer](https://extension
 
 Nach einem reload sollte nun unter _Backend -> Web -> Page_ der Seitenbaum "_DFG Viewer_" mit der Seite "_Viewer_" vorhanden sein. 
 
-#### Austausch mit ORC-On-Demand Testcode
+#### Austausch mit OCR-On-Demand Testcode
 
     cd /var/www/dfgviewer/public/typo3conf/ext
 	rm -R dfgviewer
