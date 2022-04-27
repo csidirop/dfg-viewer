@@ -96,7 +96,7 @@ Anschließend installiert man die TYPO3-Extension [DFG-Viewer](https://extension
     vendor/bin/typo3 extensionmanager:extension:install dlf
     vendor/bin/typo3 extensionmanager:extension:install dfgviewer
 
-Nach einem reload sollte nun unter _Backend -> Web -> Page_ der Seitenbaum "_DFG Viewer_" mit der Seite "_Viewer_" vorhanden sein. 
+Nach einem Reload sollte nun unter _Backend -> Web -> Page_ der Seitenbaum "_DFG Viewer_" mit der Seite "_Viewer_" vorhanden sein. 
 
 #### Austausch mit OCR-On-Demand Testcode
 
@@ -113,17 +113,17 @@ Nach einem reload sollte nun unter _Backend -> Web -> Page_ der Seitenbaum "_DFG
 	git checkout ocr-test-3.3.x-04-26
 	
 #### DFG Viewer config
-Es müssen zwei Typo3 Konfigurationseinstellungen gesetzt werden. Diese kann man entweder über das Backend machen oder direkt in typo3conf/LocalConfiguration.php:  
+Es müssen zwei Typo3 Konfigurationseinstellungen gesetzt werden. Diese können entweder über das Backend erfolgen oder direkt in typo3conf/LocalConfiguration.php:  
 
 Weg 1: Backend  
-Unter _Backend -> Admin Tools -> Settings -> Configure Installation-Wide Options_ werden alle Kofigurationen augelistet. Ganz oben lassen sich diese filtern.
+Unter _Backend -> Admin Tools -> Settings -> Configure Installation-Wide Options_ werden alle Konfigurationen aufgelistet. Ganz oben lassen sich diese filtern.
 
 1. _pageNotFoundOnCHashError_: Den Haken entfernen
 2. _requireCacheHashPresenceParameters_: "tx_dlf[id], set[mets]" eintragen
 3. Änderungen durch den Button "Write cofiguration" schreiben  
 
 Weg 2: direkt
-Im Installationsverzeichnis (zb. `/var/www/dfgviewer/public/typo3conf`) in die `LocalConfigurartion.php` folgende Werte in die Struktur einfügen:
+Im Installationsverzeichnis (z. B. `/var/www/dfgviewer/public/typo3conf`) in die `LocalConfigurartion.php` folgende Werte in die Struktur einfügen:
 
     'FE' => [
       'cacheHash' => [
@@ -135,7 +135,7 @@ Im Installationsverzeichnis (zb. `/var/www/dfgviewer/public/typo3conf`) in die `
       'pageNotFoundOnCHashError' => false,
     ],
 
-Wobei darauf geachtet werden muss, dass bereits vorhandene Schlüssel abgeändert werden müssen.
+Wobei darauf geachtet werden muss, dass bereits vorhandene Schlüssel abgeändert werden.
 
 #### ID Fix
 Als nächstes müssen die ID Konstanten des DFG-Viewers angepasst werden: 
@@ -145,7 +145,7 @@ Als nächstes müssen die ID Konstanten des DFG-Viewers angepasst werden:
 4. Unter der Einstellung _config.kitodoPageView_ muss nun in dem vorgesehenen Feld die _Uid_ eingetragen werden.
 
 #### Eingabefeld hinzufügen
-Im Backend _Web -> Page -> DFG-Viewer_ den Button "+ Content" klicken und ein HTML Objekt hinzufügen. Anschließend folgenden Code eintragen:
+Im Backend einfach _Web -> Page -> DFG-Viewer_ auf den Button "+ Content" klicken und ein HTML Objekt hinzufügen. Anschließend muss man folgenden Code eintragen:
 
     <div class="abstract">
 	<form method="get" action="index.php">
@@ -159,7 +159,7 @@ Im Backend _Web -> Page -> DFG-Viewer_ den Button "+ Content" klicken und ein HT
 	</form>
 	</div>
 
-Wobei ggfs. die id anhand der UID angepasst werden muss.
+Wobei ggfs. die ID anhand der UID angepasst werden muss.
 	
 #### TSConfig anpassen
 Im Backend _Web -> Page -> DFG-Viewer -> Viewer -> Eigenschaften bearbeiten -> Resources_ 
@@ -167,7 +167,7 @@ Im Backend _Web -> Page -> DFG-Viewer -> Viewer -> Eigenschaften bearbeiten -> R
 2. Die Page TSConfig um die Zeile `TCEMAIN.permissions.groupid = UID` wobei UID die Id aus dem vorherigen Schritt ist.
 
 #### Extension settings anpassen
-Im Backend _Admin Tools -> Settings -> Extension Configuration -> dlf_ lassen sich Einstellungen zu Kitodo.Presentation eisntellen. Unter dem Tab _Fulltextocr_ müssen nun alle Einstellungen überprüft und ggfs. angepasst werden. 
+Im Backend unter _Admin Tools -> Settings -> Extension Configuration -> dlf_ lassen sich Einstellungen zu Kitodo.Presentation bearbeiten. Unter dem Tab _Fulltextocr_ müssen nun alle Einstellungen überprüft und ggfs. angepasst werden. 
 
 Beispielsweise:
   - fulltextocr.fulltextFolder = fulltextFolder
@@ -180,32 +180,32 @@ Beispielsweise:
   - fulltextocr.ocrDelay = 10
   - fulltextocr.ocrLock = true / Haken setzen
 
-Falls die Arbeitsverzeichnisse noch nicht vorhanden sind, müssen diese noch in `/var/www/dfgviewer/public/fileadmin` angelegt werden und mit entsprechenden Lese- und Schreibrechten für den `www-data`-User versehen werden.
+Falls die Arbeitsverzeichnisse noch nicht vorhanden sind, müssen diese noch in `/var/www/dfgviewer/public/fileadmin` angelegt werden und mit den entsprechenden Lese- und Schreibrechten für den `www-data`-User versehen werden.
 
 #### Kurzinstallation Tesseract v5
     sudo apt install tesseract
 Unter Ubunutu 20.04 wird aktuell noch die veraltete Version 4 gelistet. Um die neuste Version zu installieren muss folgendes [Repo](https://ubuntuhandbook.org/index.php/2021/12/install-tesseract-ocr-5-ubuntu/) hinzugefügt werden: `sudo add-apt-repository ppa:alex-p/tesseract-ocr5` .
-Um gute OCR Ergebnisse mit historischen Drucken zu erreichen empfiehlt es sich eine dafür spezialisiertes Model zu installieren. Aktuelle Modelle kann man bei der [Uni Mannheim](https://ub-backup.bib.uni-mannheim.de/~stweil/tesstrain/frak2021/tessdata_fast/) bekommen. Diese legt man untert `/usr/share/tesseract-ocr/5/tessdata/` ab.
+Um gute OCR Ergebnisse mit historischen Drucken zu erreichen, empfiehlt es sich eine dafür spezialisiertes Model zu installieren. Aktuelle Modelle findet man bei der [Universität Mannheim](https://ub-backup.bib.uni-mannheim.de/~stweil/tesstrain/frak2021/tessdata_fast/). Diese legt man unter `/usr/share/tesseract-ocr/5/tessdata/` ab.
 
     cd /usr/share/tesseract-ocr/5/tessdata/
     wget https://ub-backup.bib.uni-mannheim.de/~stweil/tesstrain/frak2021/tessdata_fast/frak2021_1.069.traineddata
      
-Mit `tesseract --list-langs` kann man überprüfen welche Modelle vorhanden sind.
+Mit `tesseract --list-langs` kann geprüft werden, welche Modelle vorhanden sind.
 
 ### Test 
 #### Allgemein
 Der Aufruf folgender Seite 
 http://localhost/index.php?id=2&tx_dlf%5Bpage%5D=1&tx_dlf%5Bdouble%5D=0&tx_dlf%5Bid%5D=https%3A%2F%2Fdigital.slub-dresden.de%2Foai%2F%3Fverb%3DGetRecord%26metadataPrefix%3Dmets%26identifier%3Doai%3Ade%3Aslub-dresden%3Adb%3Aid-263566811&tx_dlf%5Bpagegrid%5D=1&cHash=3deb716062d5ea61c9640e5c5c5711dd 
-sollte die Übersicht eines Digitalisates der SLUB Dresden öffnen. (Gegebenenfalls muss die id im Link angepasst werden und auf die Uid des Viewers gesetzt werden.)
+sollte die Übersicht eines Digitalisates der SLUB Dresden öffnen. (Ggfs. muss die ID im Link angepasst werden und auf die Uid des Viewers gesetzt werden.)
 
-Weitere Information und Beispiele kann man [hier](https://extensions.typo3.org/extension/dfgviewer/) anschauen.
+Weitere Information und Beispiele findet man [hier](https://extensions.typo3.org/extension/dfgviewer/).
 
 #### Eingabefeld
 Die Stammseite http://localhost/index.php?id=1 aufrufen und im Eingabefeld den Link zu einer Mets Datei eingeben. 
   - Volltext vorhanden: https://digi.bib.uni-mannheim.de/fileadmin/digi/1652998276/1652998276.xml
   - Volltext nicht vorhanden*: https://digi.bib.uni-mannheim.de/fileadmin/vl/ubmaosi/59087/59087.xml
 
-(* Volltext ist im falschen Format und deshalb nicht erkannt)
+(* Volltext ist im falschen Format und wird deshalb nicht erkannt.)
 
 #### OCR-On-Demand
 Um die Volltexterzeugung zu testen, benötigt man ein Dokument ohne vorhandenen Volltext. Wird so ein Dokument im DFG-Viewer dargestellt, werden zwei zusätzliche Buttons angezeigt, mit denen man OCR für die aktuelle Seite oder das ganze Buch starten kann. Nach einem reload der Seite sollte der Volltext vorhanden sein. Sollte er nicht angezeigt werden, kann man schauen ob er im Verzeichnis `/var/www/dfgviewer/public/fileadmin/fulltextFolder/logXXXXX/`angelegt wurde.
