@@ -1,5 +1,5 @@
 {
-  "name": "csidirop/dfg-viewer",
+  "name": "csidirop/dfgviewer",
   "type": "typo3-cms-extension",
   "description": "Remote resources navigator for digital libraries. Reads METS/MODS and METS/TEI via OAI-PMH..",
   "homepage": "https://github.com/slub/dfg-viewer",
@@ -33,6 +33,12 @@
       "name": "Erik Konrad",
       "email": "typo3@slub-dresden.de",
       "role": "Developer"
+    },
+    {
+      "name": "Christos Sidiropoulos",
+      "email": "christos.sidiropoulos@bib.uni-mannheim.de",
+      "homepage": "https://www.bib.uni-mannheim.de",
+      "role": "developer"
     }
   ],
   "license": "GPL-3.0-or-later",
