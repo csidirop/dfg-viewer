@@ -60,7 +60,7 @@ Nun wird TYPO3 Version 9.5 installiert. Die Installation muss (!) mit Composer e
 #### Typo3 setup
 
 Now connect to http://localhost/ (or http://localhost/typo3/install.php) with your webbrowser. You should see the [TYPO3 Install Tool](https://docs.typo3.org/m/typo3/guide-installation/9.5/en-us/QuickInstall/TheInstallTool/Index.html). Read and fix any problems shown in the environment overview.   
-Eg. One of the problems (_max_execution_time_ _and max_input_vars_) is fixable this way:  
+##### Eg. One of the problems (_max_execution_time_ _and max_input_vars_) is fixable this way:  
  
     #create new modification file: 
     nano /etc/php/7.4/mods-available/typo3.ini  
@@ -74,6 +74,18 @@ Adding: (or the resp. values the page shows [wiki](https://docs.typo3.org/m/typo
 Save the file (`Ctrl+S`), activate the mod and restart the server:
 
     phpenmod typo3 
+    service apache2 restart 
+
+##### Eg. An other problem may be _PHP xdebug.max_nesting_level is low_. To fix it, edit the xdebug config inside the apache2 conf directory:
+
+    nano /etc/php/7.4/apache2/conf.d/20-xdebug.ini
+
+And add following line:
+
+    xdebug.max_nesting_level = 500
+
+Save the file (`Ctrl+S`) and restart apache2 service:
+
     service apache2 restart 
 
 Reload the page and follow the upcoming instructions. Btw: the DB User was set before to _typo3@localhost_ with PW _password_ !  
