@@ -36,15 +36,15 @@
     },
     {
       "name": "Christos Sidiropoulos",
-      "email": "christos.sidiropoulos@bib.uni-mannheim.de",
+      "email": "christos.sidiropoulos@uni-mannheim.de",
       "homepage": "https://www.bib.uni-mannheim.de",
-      "role": "developer"
+      "role": "Developer"
     }
   ],
   "license": "GPL-3.0-or-later",
   "require": {
     "typo3/cms-core": "~9.5.26",
-    "csidirop/presentation": "dev-3.3.4-ocr-test-04-26",
+    "csidirop/presentation": "dev-3.3.x-ocr-test",
     "slub/slub-digitalcollections": "^2.0"
   },
   "autoload": {
