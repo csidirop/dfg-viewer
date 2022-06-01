@@ -39,11 +39,11 @@ $EM_CONF[$_EXTKEY] = [
     'modify_tables' => '',
     'clearCacheOnLoad' => false,
     'lockType' => '',
-    'version' => '5.2.1-ocr-test',
+    'version' => '5.3',
     'constraints' => [
         'depends' => [
             'typo3' => '9.5.26-9.5.99',
-            'dlf' => '3.3.4-ocr-test',
+            'dlf' => '3.3.4',
         ],
         'conflicts' => [
         ],
