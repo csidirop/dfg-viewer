@@ -49,7 +49,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Csidirop\\Dfgviewer\\": "Classes/"
+      "Slub\\Dfgviewer\\": "Classes/"
     }
   },
   "extra": {
