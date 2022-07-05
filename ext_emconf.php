@@ -23,7 +23,7 @@
 ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'DFG Viewer - OCR-On-Demand-Testbuild',
+    'title' => 'DFG Viewer - OCR-On-Demand',
     'description' => 'Remote resources navigator for digital libraries. Reads METS/MODS and METS/TEI via OAI-PMH.',
     'category' => 'distribution',
     'author' => 'Christos Sidiropoulos',
@@ -39,7 +39,7 @@ $EM_CONF[$_EXTKEY] = [
     'modify_tables' => '',
     'clearCacheOnLoad' => false,
     'lockType' => '',
-    'version' => '5.3.0-ocr-test',
+    'version' => '5.3.0-ocr',
     'constraints' => [
         'depends' => [
             'typo3' => '9.5.26-9.5.99',
