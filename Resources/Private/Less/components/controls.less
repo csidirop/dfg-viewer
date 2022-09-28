@@ -157,6 +157,27 @@
                         opacity: 1;
                     }
                 }
+                // fallert funktioniert
+                &.ocr-on-demand {
+                    > ul {
+                        li {
+                            &.ocr-page {
+                                a, span {
+                                    &:before {
+                                        background: url('../Images/PageOCR.svg') no-repeat 0 0 !important;
+                                    }
+                                }
+                            }
+                            &.ocr-book {
+                                a, span {
+                                    &:before {
+                                        background: url('../Images/BookOCR.svg') no-repeat 0 0 !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
             &.downloads {
                 > a, > span {
@@ -173,6 +194,13 @@
                     background-position: -120px 0;
                 }
             }
+            &.ocr-on-demand {
+                > a, > span {
+                    /* first version */
+                    background-position: -600px -80px;
+                }
+            }
+
             &.doublepage {
                 display: none;
                 > a, > span {
@@ -251,6 +279,7 @@
                     }
                 }
             }
+
             //OCR copy from KIT SOC
             &.ocr-create {
                 > a {

@@ -35,6 +35,12 @@
 		<trans-unit id="fulltext.no_fulltext_double">
 			<source>No fulltext in double page mode.</source>
 		</trans-unit>
+		<trans-unit id="fulltext.create_ocr_page">
+			<source>Perform OCR for current page</source>
+		</trans-unit>
+		<trans-unit id="fulltext.create_ocr_book">
+			<source>Perform OCR for current document</source>
+		</trans-unit>
 		<trans-unit id="gridpage.preview">
 			<source>Thumbnail Preview</source>
 		</trans-unit>
