@@ -26,6 +26,12 @@
 		<trans-unit id="download.work">
 			<source>Download whole work</source>
 		</trans-unit>
+		<trans-unit id="fulltext.create_ocr_book">
+			<source>Create text for all pages</source>
+		</trans-unit>
+		<trans-unit id="fulltext.create_ocr_page">
+			<source>Create text for current page</source>
+		</trans-unit>
 		<trans-unit id="fulltext.no_fulltext_gridpage">
 			<source>No fulltext in gridpage mode.</source>
 		</trans-unit>
