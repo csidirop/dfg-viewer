@@ -254,7 +254,6 @@
               </f:if>
             </li>
           </f:if> -->
-        
           <!-- Copy: Fulltext button behaviour: active or not (but always visible) -->
           <li class="fulltext2">
             <f:if condition="{gp-double} == 1">
@@ -273,8 +272,41 @@
               </f:else>
             </f:if>
           </li>
-
-          <!-- non-Fulltext: Pagegrid -->
+          <!-- Fulltext: OCR-On-Demand Submenu -->
+          <f:if condition="{gp-pagegrid} == 0 and {gp-double} == 0">
+            <li class="submenu ocr-on-demand">
+              <a href="#" title="OCR-On-Demand">OCR On Demand</a>
+              <ul>
+                <!-- Fulltext: OCR-On-Demand buttons -->
+                <f:if condition="{gp-pagegrid} == 0 and {gp-double} == 0">
+                  <li class="ocr-page ocr-create" id="tx-dlf-create-form">
+                    <a onclick="document.getElementById('tx-dlf-fulltext-create-page').submit()">
+                      <!--Create Page OCR-->
+                      <f:translate key='fulltext.create_ocr_page' extensionName='dfgviewer'/>
+                      <f:form id="tx-dlf-fulltext-create-page" pageUid="{kitodoPageView}"  action="create" name="request" method="post" additionalParams="{tx_dlf:{page:'{gp-page}', id:'{gp-id}'}}" >
+                        <f:form.hidden property="create" value="1"/>
+                        <f:form.hidden property="type" value="page"/>
+                        <f:comment><f:form.submit/></f:comment>
+                      </f:form>
+                    </a>
+                  </li>
+                  <li class="ocr-book ocr-create" id="tx-dlf-create-form">
+                    <a onclick="document.getElementById('tx-dlf-fulltext-create-book').submit()">
+                      <!--Create Book OCR-->
+                      <f:translate key='fulltext.create_ocr_book' extensionName='dfgviewer'/>
+                      <f:form id="tx-dlf-fulltext-create-book" pageUid="{kitodoPageView}"  action="create" name="request" method="post" additionalParams="{tx_dlf:{page:'{gp-page}', id:'{gp-id}'}}" >
+                        <f:form.hidden property="create" value="1"/>
+                        <f:form.hidden property="type" value="book"/>
+                        <f:comment><f:form.submit/></f:comment>
+                      </f:form>
+                    </a>
+                  </li>
+                </f:if>
+              </ul>
+            </li>
+          </f:if>
+          <!-- Fulltext functionality: end -->
+          <!-- Pagegrid -->
           <li class="grid">
             <f:if condition="{dc:xpath(xpath:'(//mets:fileSec/mets:fileGrp[@USE=\'THUMBS\']/mets:file[1]/mets:FLocat/@xlink:href)[1]')}">
               <f:then>
@@ -293,39 +325,6 @@
             </f:if>
           </li>
           <!-- non-Fulltext end-->
-
-          <li class="submenu ocr-on-demand">
-            <a href="#" title="OCR on demand">OCR on demand</a>
-
-            <ul>
-              <!-- Fulltext: OCR-On-Demand buttons -->
-              <f:if condition="{gp-pagegrid} == 0 and {gp-double} == 0">
-                <li class="ocr-page ocr-create" id="tx-dlf-create-form">
-                  <a onclick="document.getElementById('tx-dlf-fulltext-create-page').submit()">
-                    <!--Create Page OCR-->
-                    <f:translate key='fulltext.create_ocr_page' extensionName='dfgviewer'/>
-                    <f:form id="tx-dlf-fulltext-create-page" pageUid="{kitodoPageView}"  action="create" name="request" method="post" additionalParams="{tx_dlf:{page:'{gp-page}', id:'{gp-id}'}}" >
-                      <f:form.hidden property="create" value="1"/>
-                      <f:form.hidden property="type" value="page"/>
-                      <f:comment><f:form.submit/></f:comment>
-                    </f:form>
-                  </a>
-                </li>
-                <li class="ocr-book ocr-create" id="tx-dlf-create-form">
-                  <a onclick="document.getElementById('tx-dlf-fulltext-create-book').submit()">
-                    <!--Create Book OCR-->
-                    <f:translate key='fulltext.create_ocr_book' extensionName='dfgviewer'/>
-                    <f:form id="tx-dlf-fulltext-create-book" pageUid="{kitodoPageView}"  action="create" name="request" method="post" additionalParams="{tx_dlf:{page:'{gp-page}', id:'{gp-id}'}}" >
-                      <f:form.hidden property="create" value="1"/>
-                      <f:form.hidden property="type" value="book"/>
-                      <f:comment><f:form.submit/></f:comment>
-                    </f:form>
-                  </a>
-                </li>
-              </f:if>
-            </ul>
-          </li>
-          <!-- Fulltext functionality: end -->
           <f:if condition="{dc:xpath(xpath:'//mets:amdSec/mets:digiprovMD/mets:mdWrap[@OTHERMDTYPE=\'DVLINKS\']/mets:xmlData/dv:links/dv:sru')}">
             <f:then>
               <li class="submenu search">
