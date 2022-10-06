@@ -46,12 +46,12 @@
 				<target><![CDATA[Vollansicht]]></target>
 			</trans-unit>
 			<trans-unit id="fulltext.create_ocr_book" approved="yes">
-				<source><![CDATA[Create text for all pages]]></source>
-				<target><![CDATA[Erzeuge Text für alle Seiten]]></target>
+				<source><![CDATA[Create fulltext for all pages]]></source>
+				<target><![CDATA[Erzeuge Volltexte für alle Seiten]]></target>
 			</trans-unit>
 			<trans-unit id="fulltext.create_ocr_page" approved="yes">
-				<source><![CDATA[Create text for current page]]></source>
-				<target><![CDATA[Erzeuge Text für die aktuelle Seite]]></target>
+				<source><![CDATA[Create fulltext for current page]]></source>
+				<target><![CDATA[Erzeuge Volltexte für die aktuelle Seite]]></target>
 			</trans-unit>
 			<trans-unit id="fulltext.no_fulltext_double" approved="yes">
 				<source><![CDATA[No fulltext in double page mode.]]></source>
@@ -61,13 +61,7 @@
 				<source><![CDATA[No fulltext in gridpage mode.]]></source>
 				<target><![CDATA[Keine Volltexte in der Vorschau-Ansicht.]]></target>
 			</trans-unit>
-			<trans-unit id="fulltext.create_ocr_page" approved="yes">
-				<source><![CDATA[Perform OCR for current page]]></source>
-				<target><![CDATA[OCR für aktuelle Seite durchführen]]></target>
 			</trans-unit>
-			<trans-unit id="fulltext.create_ocr_book" approved="yes">
-				<source><![CDATA[Perform OCR for current document]]></source>
-				<target><![CDATA[OCR für aktuelles Dokument durchführen]]></target>
 			</trans-unit>
 			<trans-unit id="gridpage.preview" approved="yes">
 				<source><![CDATA[Thumbnail Preview]]></source>
