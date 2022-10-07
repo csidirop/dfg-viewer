@@ -51,7 +51,7 @@
 			</trans-unit>
 			<trans-unit id="fulltext.create_ocr_page" approved="yes">
 				<source><![CDATA[Create fulltext for current page]]></source>
-				<target><![CDATA[Erzeuge Volltexte für die aktuelle Seite]]></target>
+				<target><![CDATA[Erzeuge Volltext für die aktuelle Seite]]></target>
 			</trans-unit>
 			<trans-unit id="fulltext.no_fulltext_double" approved="yes">
 				<source><![CDATA[No fulltext in double page mode.]]></source>
