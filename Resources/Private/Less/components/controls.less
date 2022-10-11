@@ -188,17 +188,11 @@
                     background-position: -120px 0;
                 }
             }
-            &.fulltext2 {
-                > a, > span {
-                    background-position: -120px 0;
-                }
-            }
             &.ocr-on-demand {
                 > a, > span {
                     background: #fff url("../Images/PageOCR.svg") no-repeat 0 0 !important;
                 }
             }
-
             &.doublepage {
                 display: none;
                 > a, > span {
@@ -243,24 +237,6 @@
             }
             &.fulltext {
                 span.fulltext {
-                    a.select {
-                        &.active:before {
-                            position: absolute;
-                            top: 2px;
-                            right: 0px;
-                            width: 8px;
-                            height: 8px;
-                            border-radius: 8px;
-                            border: 2px solid #fff;
-                            background: @okay-green;
-                            display: block;
-                            content: " ";
-                        }
-                    }
-                }
-            }
-            &.fulltext2 {
-                span.fulltext2 {
                     a.select {
                         &.active:before {
                             position: absolute;
