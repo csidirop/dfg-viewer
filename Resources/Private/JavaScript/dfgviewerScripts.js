@@ -1,4 +1,4 @@
-/*!
+    /*!
 
     Custom scripts
     ------------------------
@@ -20,11 +20,20 @@ $(document).ready(function() {
 
     // menu toggles for offcanvas toc and metadata
     $('.offcanvas-toggle').on(mobileEvent, function(event) {
+        // close nav on link or download if opened
+        close_all_submenus();
+
         $(this).parent().toggleClass('open');
     });
 
     // active toggle for submenus
     $('.document-functions li.submenu > a').on(mobileEvent, function(event) {
+        // close nav on link or download if opened
+        close_all_submenus('in-secondary-nav');
+
+        // close secondary nav if click on link or download
+        $('nav .secondary-nav').removeClass('open');
+
         $('li.submenu.open a').not(this).parent().removeClass('open');
         $(this).parent().toggleClass('open');
         return false;
@@ -34,6 +43,10 @@ $(document).ready(function() {
     $('nav .nav-toggle').on(mobileEvent, function(event) {
         $(this).toggleClass('active');
         $('nav .viewer-nav').toggleClass('open');
+
+        // close subnav if primary nav if opened
+        close_all_submenus('in-primary-nav');
+
     });
 
     // calendar dropdowns
@@ -91,6 +104,7 @@ $(document).ready(function() {
 
     // enable click on fullscreen button
     $('a.fullscreen').on(mobileEvent, function() {
+        close_all_submenus('all');
         if($('body.fullscreen')[0]) {
             exitFullscreen();
         } else {
@@ -151,6 +165,19 @@ $(document).ready(function() {
         $('body').removeClass('static');
     }, 1000);
 
+
+    // Closing open menus in different situations
+    $('.tx-dlf-tools-imagetools').on('click', function (event) {
+        close_all_submenus('all');
+    });
+    $('.page-control').on('click', function (event) {
+        close_all_submenus('all');
+    });
+    $('.tx-dlf-map').on('click', function (event) {
+        close_all_submenus('all');
+    });
+
+
 });
 
 $(document).keyup(function(e) {
@@ -192,6 +219,18 @@ function hideBrowserAlert(){
 
     $('#browser-hint').addClass('hidden');
     Cookies.set('tx-dlf-pageview-hidebrowseralert', 'true', { sameSite: 'lax' });
+
+}
+
+function close_all_submenus(environment = '') {
+    // close nav on link or download if opened
+    $('li.submenu.open a').parent().removeClass('open');
+    if ((environment === 'in-secondary-nav') || (environment === 'all') ) {
+        // close subnav if opend
+        $('nav .nav-toggle').removeClass('active');
+        $('nav .secondary-nav').removeClass('open');
+        $('nav ul.viewer-nav').removeClass('open');
+    };
 
 }
 
