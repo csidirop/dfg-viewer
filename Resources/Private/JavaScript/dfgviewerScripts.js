@@ -165,7 +165,6 @@ $(document).ready(function() {
         $('body').removeClass('static');
     }, 1000);
 
-
     // Closing open menus in different situations
     $('.tx-dlf-tools-imagetools').on('click', function (event) {
         close_all_submenus('all');
@@ -176,12 +175,9 @@ $(document).ready(function() {
     $('.tx-dlf-map').on('click', function (event) {
         close_all_submenus('all');
     });
-
-
 });
 
 $(document).keyup(function(e) {
-
     // Check if ESC key is pressed. Then end fullscreen mode or close SRU form.
     if (e.keyCode == 27) {
         if($('body.fullscreen')[0]) {
@@ -195,7 +191,6 @@ $(document).keyup(function(e) {
     if (e.keyCode == 70 && !$('#tx-dfgviewer-sru-query').is(':focus')) {
         return enterFullscreen();
     }
-
 });
 
 // Activate fullscreen mode and set corresponding cookie
@@ -216,10 +211,8 @@ function exitFullscreen() {
 
 // hide warning about outdated browser and save decission to cookie
 function hideBrowserAlert(){
-
     $('#browser-hint').addClass('hidden');
     Cookies.set('tx-dlf-pageview-hidebrowseralert', 'true', { sameSite: 'lax' });
-
 }
 
 function close_all_submenus(environment = '') {
@@ -231,7 +224,6 @@ function close_all_submenus(environment = '') {
         $('nav .secondary-nav').removeClass('open');
         $('nav ul.viewer-nav').removeClass('open');
     };
-
 }
 
 // EOF
