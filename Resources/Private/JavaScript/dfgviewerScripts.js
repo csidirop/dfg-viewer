@@ -217,7 +217,10 @@ function hideBrowserAlert(){
 
 function close_all_submenus(environment = '') {
     // close nav on link or download if opened
-    $('li.submenu.open a').parent().removeClass('open');
+    if (environment !== 'in-secondary-nav') {    
+        // Not with in-seondary-nav otherwise menus can no longer be closed
+        $('li.submenu.open a').parent().removeClass('open');
+    };
     if ((environment === 'in-secondary-nav') || (environment === 'all') ) {
         // close subnav if opend
         $('nav .nav-toggle').removeClass('active');
