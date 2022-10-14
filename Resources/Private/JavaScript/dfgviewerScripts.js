@@ -48,6 +48,12 @@ $(document).ready(function() {
         close_all_submenus('in-primary-nav');
 
     });
+    // active toggle for subsubmenus
+    $('.document-functions li.subsubmenu > a').on(mobileEvent, function(event) {
+        $(this).parent().toggleClass('open');
+        return false;
+    });
+
 
     // calendar dropdowns
     $('.calendar-view .contains-issues').on(mobileEvent, function(event) {

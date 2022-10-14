@@ -331,6 +331,32 @@
     }
 }
 
+li.subsubmenu.ocr-on-demand-sub {
+    //background-color: hotpink;
+
+    > a:after {
+        content: ">";
+        margin-left: 8px;
+    }
+
+    ul.subunter {
+        position: absolute;
+        left: 200px;
+        background: fade(@base-blue,90%);
+        //display: inline-block;
+        display: none;
+        padding-right: 41px;
+        top: 99px;
+    }
+
+    &.open {
+        ul.subunter {
+            display: list-item;
+        }
+    }
+}
+
+
 /* ==============[ view functions for zoom, rotate and other view related functions ]===== */
 .view-functions {
     ul {
