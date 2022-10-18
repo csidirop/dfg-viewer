@@ -332,7 +332,6 @@
 }
 
 li.subsubmenu.ocr-on-demand-sub {
-    //background-color: hotpink;
 
     > a:after {
         content: ">";
@@ -341,12 +340,13 @@ li.subsubmenu.ocr-on-demand-sub {
 
     ul.subunter {
         position: absolute;
-        left: 200px;
+        //left: 104%;     // outside main box
+        left: 90%;      // overlap with main box
+        right: auto;
         background: fade(@base-blue,90%);
-        //display: inline-block;
         display: none;
         padding-right: 41px;
-        top: 99px;
+        top: auto;
     }
 
     &.open {
