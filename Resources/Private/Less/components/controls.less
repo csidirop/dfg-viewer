@@ -334,8 +334,17 @@
 li.subsubmenu.ocr-on-demand-sub {
 
     > a:after {
-        content: ">";
+        content: "+";
         margin-left: 8px;
+        position: absolute;
+        right: 10px;
+        left: auto;
+    }
+
+    &.open {
+        > a:after {
+            content: "-";
+        }
     }
 
     ul.subunter {
