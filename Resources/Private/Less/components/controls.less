@@ -331,6 +331,9 @@
     }
 }
 
+//-------------------------------------------
+// OCR on Demand-Submenü
+//-------------------------------------------
 li.subsubmenu.ocr-on-demand-sub {
 
     > a:after {
@@ -354,13 +357,39 @@ li.subsubmenu.ocr-on-demand-sub {
         right: auto;
         background: fade(@base-blue,90%);
         display: none;
-        padding-right: 41px;
         top: auto;
     }
 
     &.open {
         ul.subunter {
             display: list-item;
+        }
+    }
+
+    #ocr-engine {
+        margin-right: 0;
+        padding-right: 0;
+
+        li.subli {
+            width: 100%;
+            margin-right: 30px;
+            a {
+                width: 100%;
+
+                &.active {
+                    i.checks {
+                        &:before {
+                            position: absolute;
+                            top: 0;
+                            left: auto;
+                            width: 40px;
+                            height: 40px;
+                            content: '';
+                            background: url(../Images/checks.svg) no-repeat 0 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }

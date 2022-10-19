@@ -181,6 +181,50 @@ $(document).ready(function() {
     $('.tx-dlf-map').on('click', function (event) {
         close_all_submenus('all');
     });
+
+    function getLang() {
+        var lang = $('html').attr('lang');
+        if (lang === 'de-DE') {
+            lang = 'de';
+        } else if (lang === 'en-US') {
+            lang = 'en';
+        };
+        return(lang);
+    }
+
+/*
+    example save as /fileadmin/config/OCR-Engines.json
+    {
+        "menu":[
+            {"name": "Tesseract", "de": "Tesseract", "en": "Tesseract", "class": "tesseract", "data": "tesseract"
+            },
+            {"name": "Tess", "de": "Tess (de)", "en": "Tess (en)", "class": "tess", "data": "tess"
+            }
+    ]};
+*/
+    function parseMenu(ulid, menu) {
+        lang = getLang();
+        for (var i=0;i<menu.length;i++) {
+            // es sollte noch ein data-wert gesetzt werden der als key für die Speicherung in der session dient
+            // für jeden anker wird ein on-action gesetzt mit dem der jeweilige Wert in der session gespeichert wird
+            // für den in der Session gespeicherte Wert wird eine Klasse ergänzt
+            // Problem session steht in javascript nicht zur Verfügung
+
+            cText = (lang === 'de'? menu[i].de : menu[i].en);
+            var li=$(ulid).append('<li class="subli"><a class="' + menu[i].class +  '" href="#" data-engine="'  + menu[i].data + '">' + cText + '<i class="checks" aria-hidden="true"></i></a></li>');
+        }
+    }
+
+    var menuid=$('#ocr-engine');
+    async function loadEngines() {
+        const response = await fetch('/fileadmin/config/OCR-Engines.json');
+        const menues = await response.json();
+        //console.log(menues);
+        var menuid=$('#ocr-engine');
+        parseMenu(menuid, menues.menu);
+    }
+    loadEngines();
+
 });
 
 $(document).keyup(function(e) {
@@ -234,5 +278,4 @@ function close_all_submenus(environment = '') {
         $('nav ul.viewer-nav').removeClass('open');
     };
 }
-
 // EOF
