@@ -210,8 +210,21 @@ $(document).ready(function() {
             // problem session is not available in javascript
             //--------------------------------------------------------------------------------------------
 
-            var li=$(ulid).append('<li class="subli"><a class="' + menu[i].class +  '" href="#" data-engine="'  + menu[i].data + '">' 
+            var li=$(ulid).append('<li class="subli"><a id="ocr-on-demand-id-' + menu[i].data + '" class="' + menu[i].class +  '" href="#" data-engine="'  + menu[i].data + '">' 
                     + menu[i][lang] + '<i class="checks" aria-hidden="true"></i></a></li>');
+            
+            // set class to subelement
+            $('#ocr-on-demand-id-' + menu[i].data).on(mobileEvent, function(event) {
+                $('.subli a').removeClass('active');
+                $(this).addClass('active');
+
+                // get the selected engine
+                var engine = this.dataset.engine;
+                // at the moment only log it
+                // ToDo: set cookie or whatever
+                console.log(engine);
+            });
+
         }
     }
 
