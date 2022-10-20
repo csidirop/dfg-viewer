@@ -183,35 +183,35 @@ $(document).ready(function() {
     });
 
     function getLang() {
-        var lang = $('html').attr('lang');
-        if (lang === 'de-DE') {
-            lang = 'de';
-        } else if (lang === 'en-US') {
-            lang = 'en';
-        };
+        var lang = $('html').attr('lang').substr(0,2);
         return(lang);
     }
 
 /*
     example save as /fileadmin/config/OCR-Engines.json
+
     {
         "menu":[
             {"name": "Tesseract", "de": "Tesseract", "en": "Tesseract", "class": "tesseract", "data": "tesseract"
             },
             {"name": "Tess", "de": "Tess (de)", "en": "Tess (en)", "class": "tess", "data": "tess"
             }
-    ]};
+    ]}
+
+    Test your json with: https://jsonlint.com/    
 */
     function parseMenu(ulid, menu) {
         lang = getLang();
         for (var i=0;i<menu.length;i++) {
-            // es sollte noch ein data-wert gesetzt werden der als key für die Speicherung in der session dient
-            // für jeden anker wird ein on-action gesetzt mit dem der jeweilige Wert in der session gespeichert wird
-            // für den in der Session gespeicherte Wert wird eine Klasse ergänzt
-            // Problem session steht in javascript nicht zur Verfügung
+            //--------------------------------------------------------------------------------------------
+            // ToDo: 
+            // for each anchor an on-action has to be set to store the respective value in the session
+            // for the element that is stored in the session, a class active should be added
+            // problem session is not available in javascript
+            //--------------------------------------------------------------------------------------------
 
-            cText = (lang === 'de'? menu[i].de : menu[i].en);
-            var li=$(ulid).append('<li class="subli"><a class="' + menu[i].class +  '" href="#" data-engine="'  + menu[i].data + '">' + cText + '<i class="checks" aria-hidden="true"></i></a></li>');
+            var li=$(ulid).append('<li class="subli"><a class="' + menu[i].class +  '" href="#" data-engine="'  + menu[i].data + '">' 
+                    + menu[i][lang] + '<i class="checks" aria-hidden="true"></i></a></li>');
         }
     }
 
@@ -219,7 +219,6 @@ $(document).ready(function() {
     async function loadEngines() {
         const response = await fetch('/fileadmin/config/OCR-Engines.json');
         const menues = await response.json();
-        //console.log(menues);
         var menuid=$('#ocr-engine');
         parseMenu(menuid, menues.menu);
     }
