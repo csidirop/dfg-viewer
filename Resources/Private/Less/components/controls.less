@@ -336,12 +336,19 @@
 //-------------------------------------------
 li.subsubmenu.ocr-on-demand-sub {
 
-    > a:after {
-        content: "+";
-        margin-left: 8px;
-        position: absolute;
-        right: 10px;
-        left: auto;
+    > a {
+
+        &#ocr-menu {
+            padding-right: 30px;
+        }
+
+        &:after {
+            content: "+";
+            margin-left: 8px;
+            position: absolute;
+            right: 10px;
+            left: auto;
+        }
     }
 
     &.open {
@@ -385,7 +392,7 @@ li.subsubmenu.ocr-on-demand-sub {
                             width: 40px;
                             height: 40px;
                             content: '';
-                            background: url(../Images/checks.svg) no-repeat 0 0;
+                            background: url('../Images/checks.svg') no-repeat 0 0;
                         }
                     }
                 }

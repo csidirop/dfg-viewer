@@ -192,17 +192,25 @@ $(document).ready(function() {
 
     {
         "menu":[
-            {"name": "Tesseract", "de": "Tesseract", "en": "Tesseract", "class": "tesseract", "data": "tesseract"
+            {"name": "Tesseract", "de": "Tesseract", "en": "Tesseract", "class": "tesseract", "data": "tesseract-basic"
             },
-            {"name": "Tess", "de": "Tess (de)", "en": "Tess (en)", "class": "tess", "data": "tess"
+            {"name": "Tess", "de": "Tess (de)", "en": "Tess (en)", "class": "tess", "data": "tess-basic"
             }
     ]}
 
     Test your json with: https://jsonlint.com/    
 */
     function parseMenu(ulid, menu) {
-        lang = getLang();
+        var lang = getLang();
+
+        // get cookie for ocrEngine
+        var ocrEngine = Cookies.get('tx-dlf-ocrEngine');
+        var active = '';
+
         for (var i=0;i<menu.length;i++) {
+            // set class if this element == ocrEngine
+            var active = ((menu[i].data === ocrEngine) ? ' active' : '');
+
             //--------------------------------------------------------------------------------------------
             // ToDo: 
             // for each anchor an on-action has to be set to store the respective value in the session
@@ -210,7 +218,8 @@ $(document).ready(function() {
             // problem session is not available in javascript
             //--------------------------------------------------------------------------------------------
 
-            var li=$(ulid).append('<li class="subli"><a id="ocr-on-demand-id-' + menu[i].data + '" class="' + menu[i].class +  '" href="#" data-engine="'  + menu[i].data + '">' 
+            var li=$(ulid).append('<li class="subli">'
+                    + '<a id="ocr-on-demand-id-' + menu[i].data + '" class="' + menu[i].class + active + '" href="#" data-engine="'  + menu[i].data + '">'
                     + menu[i][lang] + '<i class="checks" aria-hidden="true"></i></a></li>');
             
             // set class to subelement
@@ -220,9 +229,7 @@ $(document).ready(function() {
 
                 // get the selected engine
                 var engine = this.dataset.engine;
-                // at the moment only log it
-                // ToDo: set cookie or whatever
-                console.log(engine);
+                Cookies.set('tx-dlf-ocrEngine', engine, { sameSite: 'lax' });
             });
 
         }
