@@ -208,30 +208,26 @@ $(document).ready(function() {
         var active = '';
 
         for (var i=0;i<menu.length;i++) {
-            // set class if this element == ocrEngine
+            // set class active if this element === ocrEngine
             var active = ((menu[i].data === ocrEngine) ? ' active' : '');
-
-            //--------------------------------------------------------------------------------------------
-            // ToDo: 
-            // for each anchor an on-action has to be set to store the respective value in the session
-            // for the element that is stored in the session, a class active should be added
-            // problem session is not available in javascript
-            //--------------------------------------------------------------------------------------------
 
             var li=$(ulid).append('<li class="subli">'
                     + '<a id="ocr-on-demand-id-' + menu[i].data + '" class="' + menu[i].class + active + '" href="#" data-engine="'  + menu[i].data + '">'
                     + menu[i][lang] + '<i class="checks" aria-hidden="true"></i></a></li>');
-            
-            // set class to subelement
+
+            //--------------------------------------------------------
+            // add class active to subelement
+            // store selected engine in cookie
+            //--------------------------------------------------------
             $('#ocr-on-demand-id-' + menu[i].data).on(mobileEvent, function(event) {
                 $('.subli a').removeClass('active');
                 $(this).addClass('active');
 
                 // get the selected engine
                 var engine = this.dataset.engine;
+                // store in cookie
                 Cookies.set('tx-dlf-ocrEngine', engine, { sameSite: 'lax' });
             });
-
         }
     }
 
