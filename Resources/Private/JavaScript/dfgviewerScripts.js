@@ -183,14 +183,14 @@ $(document).ready(function() {
     });
 
     function getLang() {
-        var lang = $('html').attr('lang').substr(0,2);
+        let lang = $('html').attr('lang').substr(0,2);
         return(lang);
     }
 
     // Parse OCR options submenu
     function parseMenu() {
-        var ulid = $('#ocr-engine');
-        var menu = JSON.parse(Cookies.get('tx-dlf-ocrEngines')).ocrEngines;
+        let ulid = $('#ocr-engine');
+        let menu = JSON.parse(Cookies.get('tx-dlf-ocrEngines')).ocrEngines;
         /* Expected scheme:
         {
             "menu":[
@@ -200,17 +200,17 @@ $(document).ready(function() {
                 }
         ]}
         */
-        var lang = getLang();
+        let lang = getLang();
 
         // get cookie for ocrEngine
-        var ocrEngine = Cookies.get('tx-dlf-ocrEngine');
-        var active = '';
+        let ocrEngine = Cookies.get('tx-dlf-ocrEngine');
+        let active = '';
 
-        for (var i=0; i<menu.length; i++) {
+        for (let i=0; i<menu.length; i++) {
             // set class active if this element === ocrEngine:
-            var active = ((menu[i].data === ocrEngine) ? ' active' : '');
+            active = ((menu[i].data === ocrEngine) ? ' active' : '');
 
-            var li = $(ulid).append('<li class="subli">'
+            let li = $(ulid).append('<li class="subli">'
                     + '<a id="ocr-on-demand-id-' + menu[i].data + '" class="' + menu[i].class + active + '" href="#" data-engine="'  + menu[i].data + '">'
                     + menu[i][lang] + '<i class="checks" aria-hidden="true"></i></a></li>');
 
@@ -220,7 +220,7 @@ $(document).ready(function() {
                 $(this).addClass('active');
 
                 // get the selected engine:
-                var engine = this.dataset.engine;
+                let engine = this.dataset.engine;
                 // store in cookie:
                 Cookies.set('tx-dlf-ocrEngine', engine, { sameSite: 'lax' });
             });
