@@ -331,6 +331,81 @@
     }
 }
 
+//-------------------------------------------
+// OCR on Demand-Submenü
+//-------------------------------------------
+li.subsubmenu.ocr-on-demand-sub {
+
+    > a {
+
+        &#ocr-menu {
+            padding-right: 30px;
+        }
+
+        &:after {
+            content: "+";
+            margin-left: 8px;
+            position: absolute;
+            right: 10px;
+            left: auto;
+        }
+    }
+
+    &.open {
+        > a:after {
+            content: "-";
+        }
+    }
+
+    ul.subunter {
+        position: absolute;
+        //left: 104%;     // outside main box
+        left: 90%;      // overlap with main box
+        right: auto;
+        background: fade(@base-blue,90%);
+        display: none;
+        top: auto;
+    }
+
+    &.open {
+        ul.subunter {
+            display: list-item;
+        }
+    }
+
+    #ocr-engine {
+        margin-right: 0;
+        padding-right: 0;
+
+        li.subli {
+            width: 100%;
+            margin-right: 30px;
+
+            a {
+                width: 100%;
+
+                &.active {
+                    i.checks {
+                        margin-left: 10px;
+
+                        &:before {
+                            position: absolute;
+                            top: 0;
+                            left: auto;
+                            right: 0;
+                            width: 40px;
+                            height: 40px;
+                            content: '';
+                            background: url('../Images/checks.svg') no-repeat 0 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 /* ==============[ view functions for zoom, rotate and other view related functions ]===== */
 .view-functions {
     ul {

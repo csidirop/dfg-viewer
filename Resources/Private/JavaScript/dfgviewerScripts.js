@@ -48,6 +48,12 @@ $(document).ready(function() {
         close_all_submenus('in-primary-nav');
 
     });
+    // active toggle for subsubmenus
+    $('.document-functions li.subsubmenu > a').on(mobileEvent, function(event) {
+        $(this).parent().toggleClass('open');
+        return false;
+    });
+
 
     // calendar dropdowns
     $('.calendar-view .contains-issues').on(mobileEvent, function(event) {
@@ -175,6 +181,65 @@ $(document).ready(function() {
     $('.tx-dlf-map').on('click', function (event) {
         close_all_submenus('all');
     });
+
+    function getLang() {
+        var lang = $('html').attr('lang').substr(0,2);
+        return(lang);
+    }
+
+/*
+    example save as /fileadmin/config/OCR-Engines.json
+
+    {
+        "menu":[
+            {"name": "Tesseract", "de": "Tesseract", "en": "Tesseract", "class": "tesseract", "data": "tesseract-basic"
+            },
+            {"name": "Tess", "de": "Tess (de)", "en": "Tess (en)", "class": "tess", "data": "tess-basic"
+            }
+    ]}
+
+    Test your json with: https://jsonlint.com/    
+*/
+    function parseMenu(ulid, menu) {
+        var lang = getLang();
+
+        // get cookie for ocrEngine
+        var ocrEngine = Cookies.get('tx-dlf-ocrEngine');
+        var active = '';
+
+        for (var i=0;i<menu.length;i++) {
+            // set class active if this element === ocrEngine
+            var active = ((menu[i].data === ocrEngine) ? ' active' : '');
+
+            var li=$(ulid).append('<li class="subli">'
+                    + '<a id="ocr-on-demand-id-' + menu[i].data + '" class="' + menu[i].class + active + '" href="#" data-engine="'  + menu[i].data + '">'
+                    + menu[i][lang] + '<i class="checks" aria-hidden="true"></i></a></li>');
+
+            //--------------------------------------------------------
+            // add class active to subelement
+            // store selected engine in cookie
+            //--------------------------------------------------------
+            $('#ocr-on-demand-id-' + menu[i].data).on(mobileEvent, function(event) {
+                $('.subli a').removeClass('active');
+                $(this).addClass('active');
+
+                // get the selected engine
+                var engine = this.dataset.engine;
+                // store in cookie
+                Cookies.set('tx-dlf-ocrEngine', engine, { sameSite: 'lax' });
+            });
+        }
+    }
+
+    var menuid=$('#ocr-engine');
+    async function loadEngines() {
+        const response = await fetch('/fileadmin/config/OCR-Engines.json');
+        const menues = await response.json();
+        var menuid=$('#ocr-engine');
+        parseMenu(menuid, menues.menu);
+    }
+    loadEngines();
+
 });
 
 $(document).keyup(function(e) {
@@ -228,5 +293,4 @@ function close_all_submenus(environment = '') {
         $('nav ul.viewer-nav').removeClass('open');
     };
 }
-
 // EOF
