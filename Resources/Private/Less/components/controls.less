@@ -331,7 +331,7 @@
     }
 }
 
-/* ==============[ OCR on Demand-Submenü]===================== */
+/* ==============[ OCR-on-Demand Setting Submenu ]===================== */
 li.subsubmenu.ocr-on-demand-sub {
     > a {
         &#ocr-menu {
@@ -350,7 +350,7 @@ li.subsubmenu.ocr-on-demand-sub {
 
     &.open {
         > a:after {
-            content: "-";
+            content: "⌄";
         }
     }
 
@@ -380,6 +380,13 @@ li.subsubmenu.ocr-on-demand-sub {
 
             a {
                 width: 100%;
+
+                &.tesseract {
+                    background: url('../Images/OCR-Engines-Tesseract-white.svg') no-repeat 0 0;
+                }
+                &.OCRD {
+                    background: url('../Images/OCR-Engines-OCRD-white.svg') no-repeat 0 0;
+                }
 
                 &.active {
                     i.checks {
