@@ -331,12 +331,14 @@
     }
 }
 
-/* ==============[ OCR-on-Demand Setting Submenu ]===================== */
+/* ==============[ OCR-on-Demand Settings Submenu ]===================== */
 li.subsubmenu.ocr-on-demand-sub {
     > a {
         &#ocr-menu {
-            padding-right: 30px;
-            background: url('../Images/OCR-Options-white.svg') no-repeat 0 0;
+            &:before {
+                padding-right: 30px;
+                background: url('../Images/OCR-Options-white.svg') no-repeat 0 0;
+            }
         }
 
         &:after {
@@ -382,10 +384,14 @@ li.subsubmenu.ocr-on-demand-sub {
                 width: 100%;
 
                 &.tesseract {
-                    background: url('../Images/OCR-Engines-Tesseract-white.svg') no-repeat 0 0;
+                    &:before {
+                        background: url('../Images/OCR-Engines-Tesseract-white.svg') no-repeat 0 0;
+                    }
                 }
                 &.OCRD {
-                    background: url('../Images/OCR-Engines-OCRD-white.svg') no-repeat 0 0;
+                    &:before {
+                        background: url('../Images/OCR-Engines-OCRD-white.svg') no-repeat 0 0;
+                    }
                 }
 
                 &.active {
@@ -408,7 +414,6 @@ li.subsubmenu.ocr-on-demand-sub {
         }
     }
 }
-
 
 /* ==============[ view functions for zoom, rotate and other view related functions ]===== */
 .view-functions {
