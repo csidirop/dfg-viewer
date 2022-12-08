@@ -252,20 +252,11 @@
             </f:if>
           </li>
           <!-- Fulltext: OCR-On-Demand Submenu -->
-          <f:comment>
-            -----------------------------------------------------
-                Fulltext: OCR-On-Demand Submenu
-            -----------------------------------------------------
-          </f:comment>
           <f:if condition="{gp-pagegrid} == 0 and {gp-double} == 0">
             <li class="submenu ocr-on-demand">
               <a href="#" title="OCR-On-Demand">OCR On Demand</a>
               <ul>
-                <f:comment>
-                  -----------------------------------------------------
-                      Fulltext: OCR-On-Demand buttons
-                  -----------------------------------------------------
-                </f:comment>
+                <!-- Fulltext: OCR-On-Demand buttons -->
                 <f:if condition="{gp-pagegrid} == 0 and {gp-double} == 0">
                   <li class="ocr-page ocr-create" id="tx-dlf-create-form">
                     <a onclick="document.getElementById('tx-dlf-fulltext-create-page').submit()">
@@ -296,15 +287,9 @@
                   -------------------------------------------------
                 </f:comment>
                 <f:render partial="FullTextSubMenu"  section="menu" />
-
               </ul>
             </li>
           </f:if>
-          <f:comment>
-            -----------------------------------------------------
-                Fulltext: OCR-On-Demand Submenu: End
-            -----------------------------------------------------
-          </f:comment>
           <!-- Pagegrid -->
           <li class="grid">
             <f:if condition="{dc:xpath(xpath:'(//mets:fileSec/mets:fileGrp[@USE=\'THUMBS\']/mets:file[1]/mets:FLocat/@xlink:href)[1]')}">

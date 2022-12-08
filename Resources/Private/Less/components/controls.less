@@ -157,25 +157,10 @@
                         opacity: 1;
                     }
                 }
-                &.ocr-on-demand {
-                    > ul {
-                        li {
-                            &.ocr-page {
-                                a, span {
-                                    &:before {
-                                        background: url('../Images/PageOCR-white.svg') no-repeat 0 0 !important;
-                                    }
-                                }
-                            }
-                            &.ocr-book {
-                                a, span {
-                                    &:before {
-                                        background: url('../Images/BookOCR-white.svg') no-repeat 0 0 !important;
-                                    }
-                                }
-                            }
-                        }
-                    }
+            }
+            &.links {
+                > a, > span {
+                    background-position: 0px 0;
                 }
             }
             &.downloads {
@@ -184,6 +169,22 @@
                 }
             }
             &.fulltext {
+                span.fulltext {
+                    a.select {
+                        &.active:before {
+                            position: absolute;
+                            top: 2px;
+                            right: 0px;
+                            width: 8px;
+                            height: 8px;
+                            border-radius: 8px;
+                            border: 2px solid #fff;
+                            background: @okay-green;
+                            display: block;
+                            content: " ";
+                        }
+                    }
+                }
                 > a, > span {
                     background-position: -120px 0;
                 }
@@ -191,6 +192,24 @@
             &.ocr-on-demand {
                 > a, > span {
                     background: #fff url("../Images/PageOCR.svg") no-repeat 0 0 !important;
+                }
+                > ul {
+                    li {
+                        &.ocr-page {
+                            a, span {
+                                &:before {
+                                    background: url('../Images/PageOCR-white.svg') no-repeat 0 0 !important;
+                                }
+                            }
+                        }
+                        &.ocr-book {
+                            a, span {
+                                &:before {
+                                    background: url('../Images/BookOCR-white.svg') no-repeat 0 0 !important;
+                                }
+                            }
+                        }
+                    }
                 }
             }
             &.doublepage {
@@ -232,24 +251,6 @@
                         border: 8px solid transparent;
                         border-width: 5px 0 5px 8px;
                         border-left-color: @base-blue;
-                    }
-                }
-            }
-            &.fulltext {
-                span.fulltext {
-                    a.select {
-                        &.active:before {
-                            position: absolute;
-                            top: 2px;
-                            right: 0px;
-                            width: 8px;
-                            height: 8px;
-                            border-radius: 8px;
-                            border: 2px solid #fff;
-                            background: @okay-green;
-                            display: block;
-                            content: " ";
-                        }
                     }
                 }
             }
