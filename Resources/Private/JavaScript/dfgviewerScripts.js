@@ -267,10 +267,11 @@ function hideBrowserAlert(){
     Cookies.set('tx-dlf-pageview-hidebrowseralert', 'true', { sameSite: 'lax' });
 }
 
+// Auto close submenus when other menus are opened
 function close_all_submenus(environment = '') {
     // close nav on link or download if opened
     if (environment !== 'in-secondary-nav') {    
-        // Not with in-seondary-nav otherwise menus can no longer be closed
+        // Not with in-secondary-nav otherwise menus can no longer be closed
         $('li.submenu.open a').parent().removeClass('open');
     };
     if ((environment === 'in-secondary-nav') || (environment === 'all') ) {
