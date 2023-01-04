@@ -1,4 +1,4 @@
-/*!
+    /*!
 
     Custom scripts
     ------------------------
@@ -20,11 +20,20 @@ $(document).ready(function() {
 
     // menu toggles for offcanvas toc and metadata
     $('.offcanvas-toggle').on(mobileEvent, function(event) {
+        // close nav on link or download if opened
+        close_all_submenus();
+
         $(this).parent().toggleClass('open');
     });
 
     // active toggle for submenus
     $('.document-functions li.submenu > a').on(mobileEvent, function(event) {
+        // close nav on link or download if opened
+        close_all_submenus('in-secondary-nav');
+
+        // close secondary nav if click on link or download
+        $('nav .secondary-nav').removeClass('open');
+
         $('li.submenu.open a').not(this).parent().removeClass('open');
         $(this).parent().toggleClass('open');
         return false;
@@ -34,7 +43,17 @@ $(document).ready(function() {
     $('nav .nav-toggle').on(mobileEvent, function(event) {
         $(this).toggleClass('active');
         $('nav .viewer-nav').toggleClass('open');
+
+        // close subnav if primary nav if opened
+        close_all_submenus('in-primary-nav');
+
     });
+    // active toggle for subsubmenus
+    $('.document-functions li.subsubmenu > a').on(mobileEvent, function(event) {
+        $(this).parent().toggleClass('open');
+        return false;
+    });
+
 
     // calendar dropdowns
     $('.calendar-view .contains-issues').on(mobileEvent, function(event) {
@@ -95,6 +114,7 @@ $(document).ready(function() {
 
     // enable click on fullscreen button
     $('a.fullscreen').on(mobileEvent, function() {
+        close_all_submenus('all');
         if($('body.fullscreen')[0]) {
             exitFullscreen();
         } else {
@@ -155,10 +175,65 @@ $(document).ready(function() {
         $('body').removeClass('static');
     }, 1000);
 
+    // Closing open menus in different situations
+    $('.tx-dlf-tools-imagetools').on('click', function (event) {
+        close_all_submenus('all');
+    });
+    $('.page-control').on('click', function (event) {
+        close_all_submenus('all');
+    });
+    $('.tx-dlf-map').on('click', function (event) {
+        close_all_submenus('all');
+    });
+
+    function getLang() {
+        let lang = $('html').attr('lang').substr(0,2);
+        return(lang);
+    }
+
+    // Parse OCR options submenu
+    function parseMenu() {
+        let ulid = $('#ocr-engine');
+        let menu = JSON.parse(Cookies.get('tx-dlf-ocrEngines')).ocrEngines;
+        /* Expected scheme:
+        {
+            "menu":[
+                {"name": "Tesseract", "de": "Tesseract", "en": "Tesseract", "class": "tesseract", "data": "tesseract-basic"
+                },
+                {"name": "Tess", "de": "Tess (de)", "en": "Tess (en)", "class": "tess", "data": "tess-basic"
+                }
+        ]}
+        */
+        let lang = getLang();
+
+        // get cookie for ocrEngine
+        let ocrEngine = Cookies.get('tx-dlf-ocrEngine');
+        let active = '';
+
+        for (let i=0; i<menu.length; i++) {
+            // set class active if this element === ocrEngine:
+            active = ((menu[i].data === ocrEngine) ? ' active' : '');
+
+            let li = $(ulid).append('<li class="subli">'
+                    + '<a id="ocr-on-demand-id-' + menu[i].data + '" class="' + menu[i].class + active + '" href="#" data-engine="'  + menu[i].data + '">'
+                    + menu[i][lang] + '<i class="checks" aria-hidden="true"></i></a></li>');
+
+            // add class active to subelement store selected engine in cookie:
+            $('#ocr-on-demand-id-' + menu[i].data).on(mobileEvent, function(event) {
+                $('.subli a').removeClass('active');
+                $(this).addClass('active');
+
+                // get the selected engine:
+                let engine = this.dataset.engine;
+                // store in cookie:
+                Cookies.set('tx-dlf-ocrEngine', engine, { sameSite: 'lax' });
+            });
+        }
+    }
+    parseMenu();
 });
 
 $(document).keyup(function(e) {
-
     // Check if ESC key is pressed. Then end fullscreen mode or close SRU form.
     if (e.keyCode == 27) {
         if($('body.fullscreen')[0]) {
@@ -172,7 +247,6 @@ $(document).keyup(function(e) {
     if (e.keyCode == 70 && !$('#tx-dfgviewer-sru-query').is(':focus')) {
         return enterFullscreen();
     }
-
 });
 
 // Activate fullscreen mode and set corresponding cookie
@@ -193,10 +267,22 @@ function exitFullscreen() {
 
 // hide warning about outdated browser and save decision to cookie
 function hideBrowserAlert(){
-
     $('#browser-hint').addClass('hidden');
     Cookies.set('tx-dlf-pageview-hidebrowseralert', 'true', { sameSite: 'lax' });
-
 }
 
+// Auto close submenus when other menus are opened
+function close_all_submenus(environment = '') {
+    // close nav on link or download if opened
+    if (environment !== 'in-secondary-nav') {    
+        // Not with in-secondary-nav otherwise menus can no longer be closed
+        $('li.submenu.open a').parent().removeClass('open');
+    };
+    if ((environment === 'in-secondary-nav') || (environment === 'all') ) {
+        // close subnav if opend
+        $('nav .nav-toggle').removeClass('active');
+        $('nav .secondary-nav').removeClass('open');
+        $('nav ul.viewer-nav').removeClass('open');
+    };
+}
 // EOF

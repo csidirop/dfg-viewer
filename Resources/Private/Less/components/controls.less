@@ -158,14 +158,58 @@
                     }
                 }
             }
+            &.links {
+                > a, > span {
+                    background-position: 0px 0;
+                }
+            }
             &.downloads {
                 > a, > span {
                     background-position: -40px 0;
                 }
             }
             &.fulltext {
+                span.fulltext {
+                    a.select {
+                        &.active:before {
+                            position: absolute;
+                            top: 2px;
+                            right: 0px;
+                            width: 8px;
+                            height: 8px;
+                            border-radius: 8px;
+                            border: 2px solid #fff;
+                            background: @okay-green;
+                            display: block;
+                            content: " ";
+                        }
+                    }
+                }
                 > a, > span {
                     background-position: -120px 0;
+                }
+            }
+            &.ocr-on-demand {
+                > a, > span {
+                    background: #fff url("../Images/PageOCR.svg") no-repeat 0 0 !important;
+                }
+                > ul {
+                    li {
+                        &.ocr-page {
+                            a, span {
+                                &:before {
+                                    background: url('../Images/PageOCR-white.svg') no-repeat 0 0 !important;
+                                }
+                            }
+                        }
+                        &.ocr-book {
+                            a, span {
+                                &:before {
+                                    background: url('../Images/BookOCR-white.svg') no-repeat 0 0 !important;
+                                }
+                            }
+                        }
+                    }
                 }
             }
             &.doublepage {
@@ -207,24 +251,6 @@
                         border: 8px solid transparent;
                         border-width: 5px 0 5px 8px;
                         border-left-color: @base-blue;
-                    }
-                }
-            }
-            &.fulltext {
-                span.fulltext {
-                    a.select {
-                        &.active:before {
-                            position: absolute;
-                            top: 2px;
-                            right: 0px;
-                            width: 8px;
-                            height: 8px;
-                            border-radius: 8px;
-                            border: 2px solid #fff;
-                            background: @okay-green;
-                            display: block;
-                            content: " ";
-                        }
                     }
                 }
             }
@@ -302,6 +328,95 @@
         }
         @media screen and (min-width: @desktopViewportWidth) {
             left: 124px;
+        }
+    }
+}
+
+/* ==============[ OCR-on-Demand Settings Submenu ]===================== */
+li.subsubmenu.ocr-on-demand-sub {
+    > a {
+        &#ocr-menu {
+            &:before {
+                padding-right: 30px;
+                background: url('../Images/OCR-Options-white.svg') no-repeat 0 0;
+            }
+        }
+
+        &:after {
+            content: "+";
+            margin-left: 8px;
+            position: absolute;
+            right: 10px;
+            left: auto;
+        }
+    }
+
+    &.open {
+        > a:after {
+            content: "⌄";
+        }
+    }
+
+    ul.subunter {
+        position: absolute;
+        //left: 104%;     // outside main box
+        left: 90%;      // overlap with main box
+        right: auto;
+        background: fade(@base-blue,90%);
+        display: none;
+        top: auto;
+    }
+
+    &.open {
+        ul.subunter {
+            display: list-item;
+        }
+    }
+
+    #ocr-engine {
+        margin-right: 0;
+        padding-right: 0;
+
+        li.subli {
+            width: 100%;
+            margin-right: 30px;
+
+            a {
+                width: 100%;
+
+                &.tesseract {
+                    &:before {
+                        background: url('../Images/OCR-Engines-Tesseract-white.svg') no-repeat 0 0;
+                    }
+                }
+                &.OCRD {
+                    &:before {
+                        background: url('../Images/OCR-Engines-OCRD-white.svg') no-repeat 0 0;
+                    }
+                }
+                &.kraken {
+                    &:before {
+                        background: url('../Images/OCR-Engines-Kraken-white.svg') no-repeat 0 0;
+                    }
+                }
+
+                &.active {
+                    i.checks {
+                        margin-left: 10px;
+
+                        &:before {
+                            position: absolute;
+                            top: 0;
+                            left: auto;
+                            right: 0;
+                            width: 40px;
+                            height: 40px;
+                            content: '';
+                            background: url('../Images/checks.svg') no-repeat 0 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
