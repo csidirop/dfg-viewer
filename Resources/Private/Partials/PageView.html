@@ -187,7 +187,6 @@
               </f:else>
             </f:if>
           </li>
-          <!----- Fulltext functionality: ----->
           <!-- Fulltext button behaviour: active or not (but always visible) -->
           <li class="fulltext">
             <f:if condition="{gp-double} == 1">
@@ -241,6 +240,7 @@
               </ul>
             </li>
           </f:if>
+          <!-- Search: -->
           <f:if condition="{dc:xpath(xpath:'//mets:amdSec/mets:digiprovMD/mets:mdWrap[@OTHERMDTYPE=\'DVLINKS\']/mets:xmlData/dv:links/dv:sru')}">
             <f:then>
               <li class="submenu search">
