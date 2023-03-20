@@ -192,8 +192,32 @@ $(document).ready(function() {
     }
 
     // Parse OCR options submenu
-    function parseMenu() {
-        let ulid = $('#ocr-engine');
+    function generateOcrOptionMenu() {
+        let ulid = $('#ocr-options');
+
+        //Page part:
+        if (Cookies.get('tx-dlf-ocrType') == "page") {
+            $('#ocr-on-demand-type-pageocr').addClass('active');
+        } else {
+            $('#ocr-on-demand-type-bookocr').addClass('active');
+        }
+
+        $('#ocr-on-demand-type-pageocr').on(mobileEvent, function(event) {
+            $('.subli2 a').removeClass('active');
+            $(this).addClass('active');
+
+            // store in cookie:
+            Cookies.set('tx-dlf-ocrType', "page", { sameSite: 'lax' });
+        });
+        $('#ocr-on-demand-type-bookocr').on(mobileEvent, function(event) {
+            $('.subli2 a').removeClass('active');
+            $(this).addClass('active');
+
+            // store in cookie:
+            Cookies.set('tx-dlf-ocrType', "book", { sameSite: 'lax' });
+        });
+
+        //OCR engine part:
         let menu = JSON.parse(Cookies.get('tx-dlf-ocrEngines')).ocrEngines;
         /* Expected scheme:
         {
@@ -215,11 +239,11 @@ $(document).ready(function() {
             active = ((menu[i].data === ocrEngine) ? ' active' : '');
 
             let li = $(ulid).append('<li class="subli">'
-                    + '<a id="ocr-on-demand-id-' + menu[i].data + '" class="' + menu[i].class + active + '" href="#" data-engine="'  + menu[i].data + '">'
+                    + '<a id="ocr-on-demand-engine-' + menu[i].data + '" class="' + menu[i].class + active + '" href="#" data-engine="'  + menu[i].data + '">'
                     + menu[i][lang] + '<i class="checks" aria-hidden="true"></i></a></li>');
 
             // add class active to subelement store selected engine in cookie:
-            $('#ocr-on-demand-id-' + menu[i].data).on(mobileEvent, function(event) {
+            $('#ocr-on-demand-engine-' + menu[i].data).on(mobileEvent, function(event) {
                 $('.subli a').removeClass('active');
                 $(this).addClass('active');
 
@@ -230,7 +254,7 @@ $(document).ready(function() {
             });
         }
     }
-    parseMenu();
+    generateOcrOptionMenu();
 });
 
 $(document).keyup(function(e) {

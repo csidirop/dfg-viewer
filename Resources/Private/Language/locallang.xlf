@@ -32,6 +32,9 @@
 		<trans-unit id="fulltext.create_ocr_page">
 			<source>Create text for current page</source>
 		</trans-unit>
+		<trans-unit id="fulltext.create_ocr">
+			<source>Create fulltext</source>
+		</trans-unit>
 		<trans-unit id="fulltext.no_fulltext_gridpage">
 			<source>No fulltext in gridpage mode.</source>
 		</trans-unit>

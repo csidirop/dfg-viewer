@@ -373,10 +373,11 @@
         }
     }
 
-    #ocr-engine {
+    #ocr-options {
         margin-right: 0;
         padding-right: 0;
 
+        li.subli2,
         li.subli {
             width: 100%;
             margin-right: 30px;
@@ -417,6 +418,30 @@
                     }
                 }
             }
+        }
+
+        li.subli2 {
+            #ocr-on-demand-type-pageocr {
+                &:before {
+                    background: url('../Images/PageOCR-white.svg') no-repeat 0 0;
+                }
+            }
+            #ocr-on-demand-type-bookocr {
+                &:before {
+                    background: url('../Images/BookOCR-white.svg') no-repeat 0 0;
+                }
+            }
+        }
+    }
+
+    .subsubmenutitle{
+        text-align: center;
+        font-style: italic;
+        font-size: medium;
+        text-indent: -50px;
+
+        &:before {
+            content: none;
         }
     }
 }
