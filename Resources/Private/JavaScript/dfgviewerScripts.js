@@ -198,8 +198,10 @@ $(document).ready(function() {
         //Page part:
         if (Cookies.get('tx-dlf-ocrType') == "page") {
             $('#ocr-on-demand-type-pageocr').addClass('active');
-        } else {
+        } else if (Cookies.get('tx-dlf-ocrType') == "book") {
             $('#ocr-on-demand-type-bookocr').addClass('active');
+        } else { //default: (TODO: maybe sacrifce "logical" for "cleaner" code: no double block)
+            $('#ocr-on-demand-type-pageocr').addClass('active');
         }
 
         $('#ocr-on-demand-type-pageocr').on(mobileEvent, function(event) {
