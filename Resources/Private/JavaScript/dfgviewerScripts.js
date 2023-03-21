@@ -26,7 +26,7 @@ $(document).ready(function() {
         $(this).parent().toggleClass('open');
     });
 
-    // active toggle for submenus
+    // active toggle for submenus in .document-functions
     $('.document-functions li.submenu > a').on(mobileEvent, function(event) {
         // close nav on link or download if opened
         close_all_submenus('in-secondary-nav');
@@ -34,6 +34,13 @@ $(document).ready(function() {
         // close secondary nav if click on link or download
         $('nav .secondary-nav').removeClass('open');
 
+        $('li.submenu.open a').not(this).parent().removeClass('open');
+        $(this).parent().toggleClass('open');
+        return false;
+    });
+
+    // active toggle for submenus in .view-functions
+    $('.view-functions li.submenu > a').on(mobileEvent, function(event) {
         $('li.submenu.open a').not(this).parent().removeClass('open');
         $(this).parent().toggleClass('open');
         return false;

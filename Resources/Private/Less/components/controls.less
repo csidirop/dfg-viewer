@@ -451,7 +451,53 @@
     ul {
         position: relative;
         li {
-            display: none;
+            &.submenu {
+                > ul {
+                    // position: absolute;
+                    // bottom: 80px;
+                    top: 50px;
+                    right: 70px;
+                    padding: 20px;
+                    // width: fit-content;
+                    background: fade(@base-blue,90%);
+                    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+                    font-size: 14px;
+                    line-height: 1.4;
+                    text-align: left;
+                    transform-origin: center bottom;
+                    .transition();
+                    .transform(scaleY(0) translateY(100px));
+                    opacity: 0;
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+                    li {
+                        a,
+                        span {
+                            position: relative;
+                            color: #fff;
+                            display: block;
+                            // padding-left: 40px;
+                            // margin: 10px 0;
+                            // min-height: 40px;
+                            line-height: 40px;
+                            white-space: nowrap;
+                        }
+                        span {
+                            opacity: 0.5;
+                        }
+                    }
+                }
+                &.open {
+                    &:before {
+                        top: -13.5px;
+                        border-top-width: 10px;
+                        opacity: 1;
+                    }
+                    ul {
+                        .transform(scaleY(1) translateY(0));
+                        opacity: 1;
+                    }
+                }
+            }
         }
         @media screen and (min-width: @tabletLandscapeViewportWidth) {
             position: absolute;
