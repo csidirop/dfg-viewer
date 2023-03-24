@@ -254,14 +254,21 @@
           <ul>
             <f:cObject typoscriptObjectPath="lib.kitodo.navigation.viewfunction" />
             <li class="tx-dlf-imagemanipulationtool"><f:cObject typoscriptObjectPath="plugin.tx_dlf_imagemanipulationtool" /></li>
-            <li class="submenu fulltextmenu open">
-              <a href="#" class="subsubmenutitle active" title="ocr-menu-pages">Pages</a>
-              <ul>
-                <li class="subli2">
-                  <a id="ocr-on-demand-type-bookocr" class="ocr-on-demand-options" href="#">Erzeuge VT für ganzes Buch<i class="checks" aria-hidden="true"></i></a>
-                </li>
-              </ul>
-            </li>
+            <f:if condition="{gp-double} == 0">
+              <li class="submenu fulltextmenu open">
+                <a href="#" class="subsubmenutitle active" title="ocr-menu-pages">Pages</a>
+                <ul>
+                  <li class="subli3">
+                    <a id="fulltextmenu-1" class="fulltextmenu-text" href="#">Volltextquellen:</a>
+                  </li>
+                  <li class="subli3">
+                    <select  id="fulltextmenu-dropdown" class="fulltextmenu-dropdown">
+                      <option value="orig">Original VT</option>
+                    </select>
+                  </li>
+                </ul>
+              </li>
+            </f:if>
           </ul>
         </f:else>
       </f:if>

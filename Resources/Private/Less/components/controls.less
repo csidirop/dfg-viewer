@@ -456,10 +456,12 @@
                     // position: absolute;
                     // bottom: 80px;
                     top: 50px;
-                    right: 70px;
+                    // right: 0px;
                     padding: 20px;
                     // width: fit-content;
-                    background: fade(@base-blue,90%);
+                    // overflow: auto;
+                    // display: inline-block;
+                    // background: fade(@base-blue,90%);
                     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
                     font-size: 14px;
                     line-height: 1.4;
@@ -473,12 +475,12 @@
                         a,
                         span {
                             position: relative;
-                            color: #fff;
-                            display: block;
-                            // padding-left: 40px;
+                            color: fade(@base-blue,90%);
+                            display: contents;
+                            // padding-right: 400px;
                             // margin: 10px 0;
                             // min-height: 40px;
-                            line-height: 40px;
+                            // line-height: 40px;
                             white-space: nowrap;
                         }
                         span {
@@ -498,15 +500,27 @@
                     }
                 }
             }
+            &.fulltextmenu {
+                > a, > span {
+                    background: #fff url("../Images/testarrow.png") no-repeat 0 0 !important;
+                }
+                > ul {
+                    opacity: 100;
+                    background: #fff;
+                    // li {
+
+                    // }
+                }
+            }
         }
         @media screen and (min-width: @tabletLandscapeViewportWidth) {
             position: absolute;
             top: 20px;
             right: 10px;
             display: block;
-            height: 40px;
+            // height: 10px;
             li {
-                display: inline-block;
+                display: contents;
                 &.rotate {
                     display: none;
                 }
@@ -635,6 +649,9 @@
                     .upend {
                         background-position: -280px 0;
                     }
+                }
+                &.subsubmenutitle{
+                    top: 60px;
                 }
             }
         }

@@ -201,6 +201,7 @@ $(document).ready(function() {
     // Parse OCR options submenu
     function generateOcrOptionMenu() {
         let ulid = $('#ocr-options');
+        let ulid2 = $('#fulltextmenu-dropdown');
 
         //Page part:
         if (Cookies.get('tx-dlf-ocrType') == "page") {
@@ -247,9 +248,11 @@ $(document).ready(function() {
             // set class active if this element === ocrEngine:
             active = ((menu[i].data === ocrEngine) ? ' active' : '');
 
-            let li = $(ulid).append('<li class="subli">'
+            $(ulid).append('<li class="subli">'
                     + '<a id="ocr-on-demand-engine-' + menu[i].data + '" class="' + menu[i].class + active + '" href="#" data-engine="'  + menu[i].data + '">'
                     + menu[i][lang] + '<i class="checks" aria-hidden="true"></i></a></li>');
+
+            $(ulid2).append('<option value="'+menu[i].data+'" '+((menu[i].data === ocrEngine) ? ' selected' : '')+'>'+menu[i].data+'</option>');
 
             // add class active to subelement store selected engine in cookie:
             $('#ocr-on-demand-engine-' + menu[i].data).on(mobileEvent, function(event) {
