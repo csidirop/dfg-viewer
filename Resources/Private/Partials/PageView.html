@@ -210,32 +210,47 @@
             <li class="submenu ocr-on-demand">
               <a href="#" title="OCR-On-Demand">OCR On Demand</a>
               <ul>
-                <!-- Fulltext: OCR-On-Demand buttons -->
-                <li class="ocr-page ocr-create" id="tx-dlf-create-form">
-                  <a onclick="document.getElementById('tx-dlf-fulltext-create-page').submit()">
-                    <!--Create Page OCR-->
-                    <f:translate key='fulltext.create_ocr_page' extensionName='dfgviewer'/>
-                    <f:form id="tx-dlf-fulltext-create-page" pageUid="{kitodoPageView}" extensionName="dfgviewer" action="create" name="request" method="post" additionalParams="{tx_dlf:{page:'{gp-page}', id:'{gp-id}'}}" >
-                      <f:form.hidden property="create" value="1"/>
-                      <f:form.hidden property="type" value="page"/>
-                      <f:comment><f:form.submit/></f:comment>
-                    </f:form>
-                  </a>
+                <li class="subli2">
+                  <a id="ocr-on-demand-type-1" class="ocr-on-demand-options" href="#">Volltext nicht anzeigen<i class="checks" aria-hidden="true"></i></a>
                 </li>
-                <li class="ocr-book ocr-create" id="tx-dlf-create-form">
-                  <a onclick="document.getElementById('tx-dlf-fulltext-create-book').submit()">
-                    <!--Create Book OCR-->
-                    <f:translate key='fulltext.create_ocr_book' extensionName='dfgviewer'/>
-                    <f:form id="tx-dlf-fulltext-create-book" pageUid="{kitodoPageView}" extensionName="dfgviewer" action="create" name="request" method="post" additionalParams="{tx_dlf:{page:'{gp-page}', id:'{gp-id}'}}" >
-                      <f:form.hidden property="create" value="1"/>
-                      <f:form.hidden property="type" value="book"/>
-                      <f:comment><f:form.submit/></f:comment>
-                    </f:form>
-                  </a>
+                <li class="subli2">
+                  <a id="ocr-on-demand-type-2" class="ocr-on-demand-options" href="#">Originalen Volltext anzeigen / Kein Volltext vorhanden<i class="checks" aria-hidden="true"></i></a>
+                </li>
+                <li class="subli2">
+                  <a id="ocr-on-demand-type-3" class="ocr-on-demand-options" href="#">Tesseract Volltext anzeigen / erzeugen<i class="checks" aria-hidden="true"></i></a>
+                </li>
+                <li class="subli2">
+                  <a id="ocr-on-demand-type-3" class="ocr-on-demand-options" href="#">OCRD Volltext anzeigen / erzeugen<i class="checks" aria-hidden="true"></i></a>
+                </li>
+                <li class="subli2">
+                  <a id="ocr-on-demand-type-3" class="ocr-on-demand-options" href="#">Kraken Volltext anzeigen / erzeugen<i class="checks" aria-hidden="true"></i></a>
                 </li>
                 <li class="subsubmenu ocr-on-demand-sub">
-                  <a href="#" id="ocr-menu">OCR-Engine</a>
-                  <ul id="ocr-engine" class="subunter"></ul>
+                  <a href="#" id="ocr-menu">Volltexte erzeugen für</a>
+                  <!-- <ul id="ocr-on-demand-sub-type-1" class="subunter"> </ul> -->
+                  <!-- Fulltext: OCR-On-Demand buttons -->
+                  <ul class="ocr-page ocr-create" id="tx-dlf-create-form">
+                    <a onclick="document.getElementById('tx-dlf-fulltext-create-page').submit()">
+                      <!--Create Page OCR-->
+                      <f:translate key='fulltext.create_ocr_page' extensionName='dfgviewer'/>
+                      <f:form id="tx-dlf-fulltext-create-page" pageUid="{kitodoPageView}" extensionName="dfgviewer" action="create" name="request" method="post" additionalParams="{tx_dlf:{page:'{gp-page}', id:'{gp-id}'}}" >
+                        <f:form.hidden property="create" value="1"/>
+                        <f:form.hidden property="type" value="page"/>
+                        <f:comment><f:form.submit/></f:comment>
+                      </f:form>
+                    </a>
+                  </ul>
+                  <ul class="ocr-book ocr-create" id="tx-dlf-create-form">
+                    <a onclick="document.getElementById('tx-dlf-fulltext-create-book').submit()">
+                      <!--Create Book OCR-->
+                      <f:translate key='fulltext.create_ocr_book' extensionName='dfgviewer'/>
+                      <f:form id="tx-dlf-fulltext-create-book" pageUid="{kitodoPageView}" extensionName="dfgviewer" action="create" name="request" method="post" additionalParams="{tx_dlf:{page:'{gp-page}', id:'{gp-id}'}}" >
+                        <f:form.hidden property="create" value="1"/>
+                        <f:form.hidden property="type" value="book"/>
+                        <f:comment><f:form.submit/></f:comment>
+                      </f:form>
+                    </a>
+                  </ul>
                 </li>
               </ul>
             </li>
