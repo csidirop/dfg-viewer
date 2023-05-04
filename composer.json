@@ -1,5 +1,5 @@
 {
-  "name": "slub/dfgviewer",
+  "name": "ub-mannheim/dfgviewer",
   "type": "typo3-cms-extension",
   "description": "Remote resources navigator for digital libraries. Reads METS/MODS and METS/TEI via OAI-PMH.",
   "homepage": "https://github.com/slub/dfg-viewer",
@@ -38,7 +38,7 @@
   "license": "GPL-3.0-or-later",
   "require": {
     "typo3/cms-core": "~9.5.31|^10.4",
-    "kitodo/presentation": "^4.0|dev-master",
+    "ub-mannheim/presentation": "^4.0|dev-master",
     "slub/slub-digitalcollections": "^3.0|dev-master"
   },
   "autoload": {
