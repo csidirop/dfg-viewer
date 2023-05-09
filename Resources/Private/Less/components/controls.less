@@ -273,6 +273,28 @@
             }
             // Find the blocks for the SRU search elements in external ./sru.less
         }
+        > select {
+            position: absolute;
+            margin-top: 5px;
+            margin-left: 5px;
+            padding: 5px 10px 5px 10px;
+            border-width: 0 10px;
+            border-radius: 20px;
+            border: 1px solid desaturate(lighten(@light-blue,10%),20%);
+            border-top-color: fade(@base-blue,90%);
+            background-color: fade(@light-blue,30%);
+            
+            cursor: pointer;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            .no-touchevents & {
+                .transition();
+                &:hover {
+                    border: 1px solid lighten(@light-blue,12%);
+                    background-color: lighten(@light-blue,20%);
+                }
+            }
+        }
         @media screen and (min-width: @tabletLandscapeViewportWidth) {
             top: 20px;
             left: 116px;

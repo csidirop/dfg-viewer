@@ -187,59 +187,13 @@
               </f:else>
             </f:if>
           </li>
-          <!-- Fulltext button behaviour: active or not (but always visible) -->
-          <li class="fulltext">
-            <f:if condition="{gp-double} == 1">
-              <f:then>
-                <span class="select switchoff" id="tx-dlf-tools-fulltext" title="{f:translate(key:'fulltext.no_fulltext_double', extensionName:'dfgviewer')}"><f:translate key='fulltext.no_fulltext_double' extensionName='dfgviewer' /></span>
-              </f:then>
-              <f:else>
-                <f:if condition="{gp-pagegrid} == 1">
-                  <f:then>
-                    <span class="select switchoff" id="tx-dlf-tools-fulltext" title="{f:translate(key:'fulltext.no_fulltext_gridpage', extensionName:'dfgviewer')}"><f:translate key='fulltext.no_fulltext_gridpage' extensionName='dfgviewer' /></span>
-                  </f:then>
-                  <f:else>
-                    <f:cObject typoscriptObjectPath="plugin.tx_dlf_fulltexttool" />
-                  </f:else>
-                </f:if>
-              </f:else>
-            </f:if>
-          </li>
-          <!-- Fulltext: OCR-On-Demand Submenu -->
-          <f:if condition="{gp-pagegrid} == 0 and {gp-double} == 0">
-            <li class="submenu ocr-on-demand">
-              <a href="#" title="OCR-On-Demand">OCR On Demand</a>
-              <ul>
-                <!-- Fulltext: OCR-On-Demand buttons -->
-                <li class="ocr-page ocr-create" id="tx-dlf-create-form">
-                  <a onclick="document.getElementById('tx-dlf-fulltext-create-page').submit()">
-                    <!--Create Page OCR-->
-                    <f:translate key='fulltext.create_ocr_page' extensionName='dfgviewer'/>
-                    <f:form id="tx-dlf-fulltext-create-page" pageUid="{kitodoPageView}" extensionName="dfgviewer" action="create" name="request" method="post" additionalParams="{tx_dlf:{page:'{gp-page}', id:'{gp-id}'}}" >
-                      <f:form.hidden property="create" value="1"/>
-                      <f:form.hidden property="type" value="page"/>
-                      <f:comment><f:form.submit/></f:comment>
-                    </f:form>
-                  </a>
-                </li>
-                <li class="ocr-book ocr-create" id="tx-dlf-create-form">
-                  <a onclick="document.getElementById('tx-dlf-fulltext-create-book').submit()">
-                    <!--Create Book OCR-->
-                    <f:translate key='fulltext.create_ocr_book' extensionName='dfgviewer'/>
-                    <f:form id="tx-dlf-fulltext-create-book" pageUid="{kitodoPageView}" extensionName="dfgviewer" action="create" name="request" method="post" additionalParams="{tx_dlf:{page:'{gp-page}', id:'{gp-id}'}}" >
-                      <f:form.hidden property="create" value="1"/>
-                      <f:form.hidden property="type" value="book"/>
-                      <f:comment><f:form.submit/></f:comment>
-                    </f:form>
-                  </a>
-                </li>
-                <li class="subsubmenu ocr-on-demand-sub">
-                  <a href="#" id="ocr-menu">OCR-Engine</a>
-                  <ul id="ocr-engine" class="subunter"></ul>
-                </li>
-              </ul>
-            </li>
-          </f:if>
+          <select class="ocr-select">
+            <option value="noocr">Kein Volltext vorhanden</option>
+            <option value="showocr">Volltext anzeigen</option>
+            <option value="genocr-tess">Volltext erzeugen/auswählen: Tesseract</option>
+            <option value="genocr-ocrd">Volltext erzeugen/auswählen: OCRD</option>
+            <option value="genocr-kraken">Volltext erzeugen/auswählen: Kraken</option>
+          </select>
           <!-- Search: -->
           <f:if condition="{dc:xpath(xpath:'//mets:amdSec/mets:digiprovMD/mets:mdWrap[@OTHERMDTYPE=\'DVLINKS\']/mets:xmlData/dv:links/dv:sru')}">
             <f:then>
