@@ -41,7 +41,7 @@
                   </f:if>
                   <f:cObject typoscriptObjectPath="plugin.tx_dlf_pageview" />
                   <f:cObject typoscriptObjectPath="plugin.tx_dlf_audioplayer" />
-                  <div class="fulltext-container"><div id="tx-dlf-fulltextselection"></div></div>
+                  <div class="fulltext-container"><div id="tx-dlf-fulltextselection" contenteditable="false"></div></div>
                 </f:else>
               </f:if>
             </f:else>
@@ -347,6 +347,22 @@
           <f:else>
             <ul>
               <f:cObject typoscriptObjectPath="lib.kitodo.navigation.viewfunction" />
+              <li class="tx-dlf-editablefulltext">
+                <f:if condition="{document.getElementById('tx-dlf-fulltextselection').getAttribute('contenteditable')} == 'false'">
+                  <!-- Make text editable: -->
+                  <f:then>
+                    <a href="#" class="in" title="Make Fulltext editable" onclick="document.getElementById('tx-dlf-fulltextselection').setAttribute('contenteditable','true')">
+                      Make Fulltext editable
+                    </a>
+                  </f:then>
+                  <f:else>
+                    <!-- Make text uneditable: -->
+                    <a href="#" class="in" title="Make Fulltext uneditable" onclick="document.getElementById('tx-dlf-fulltextselection').setAttribute('contenteditable','false')">
+                      Make Fulltext uneditable
+                    </a>
+                  </f:else>
+                </f:if>
+              </li>
               <li class="tx-dlf-imagemanipulationtool">
                 <f:cObject typoscriptObjectPath="plugin.tx_dlf_imagemanipulationtool" />
               </li>
