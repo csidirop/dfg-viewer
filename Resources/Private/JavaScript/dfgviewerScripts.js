@@ -285,4 +285,21 @@ function close_all_submenus(environment = '') {
         $('nav ul.viewer-nav').removeClass('open');
     };
 }
+
+// Switch between editable and uneditable mode for the fulltext field 'tx-dlf-fulltextselection'
+function switchEditable() {
+    let $cText;
+    if (document.getElementById('tx-dlf-fulltextselection').getAttribute('contenteditable') == 'false') {
+        // editable
+        document.getElementById('tx-dlf-fulltextselection').setAttribute('contenteditable','true');
+        $cText = "Make Fulltext editable";
+    } else {
+        // uneditable
+        document.getElementById('tx-dlf-fulltextselection').setAttribute('contenteditable','false');
+        $cText = "Make Fulltext uneditable";
+    }
+    document.getElementById('tx-dlf-editablefulltext-switch').title = $cText;
+    document.getElementById('tx-dlf-editablefulltext-switch').innerHTML = $cText;
+}
+
 // EOF

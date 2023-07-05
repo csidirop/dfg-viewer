@@ -348,20 +348,9 @@
             <ul>
               <f:cObject typoscriptObjectPath="lib.kitodo.navigation.viewfunction" />
               <li class="tx-dlf-editablefulltext">
-                <f:if condition="{document.getElementById('tx-dlf-fulltextselection').getAttribute('contenteditable')} == 'false'">
-                  <!-- Make text editable: -->
-                  <f:then>
-                    <a href="#" class="in" title="Make Fulltext editable" onclick="document.getElementById('tx-dlf-fulltextselection').setAttribute('contenteditable','true')">
-                      Make Fulltext editable
-                    </a>
-                  </f:then>
-                  <f:else>
-                    <!-- Make text uneditable: -->
-                    <a href="#" class="in" title="Make Fulltext uneditable" onclick="document.getElementById('tx-dlf-fulltextselection').setAttribute('contenteditable','false')">
-                      Make Fulltext uneditable
-                    </a>
-                  </f:else>
-                </f:if>
+                  <a href="#" class="in" id="tx-dlf-editablefulltext-switch" title="Make Fulltext editable" onclick="switchEditable()">
+                    Make Fulltext editable
+                  </a>
               </li>
               <li class="tx-dlf-imagemanipulationtool">
                 <f:cObject typoscriptObjectPath="plugin.tx_dlf_imagemanipulationtool" />
