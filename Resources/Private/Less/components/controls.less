@@ -427,6 +427,11 @@
         position: relative;
         li {
             display: none;
+            &.tx-dlf-editablefulltext {
+                > a, > span {
+                    background: #fff url("../Images/OCR-Edit.svg") no-repeat 0 0 !important;
+                }
+            }
         }
         @media screen and (min-width: @tabletLandscapeViewportWidth) {
             position: absolute;
