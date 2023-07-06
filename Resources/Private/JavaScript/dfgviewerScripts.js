@@ -292,10 +292,12 @@ function switchEditable() {
     if (document.getElementById('tx-dlf-fulltextselection').getAttribute('contenteditable') == 'false') {
         // editable
         document.getElementById('tx-dlf-fulltextselection').setAttribute('contenteditable','true');
+        document.getElementById('tx-dlf-editablefulltext-switch').classList.add('active');
         $cText = "Make Fulltext editable";
     } else {
         // uneditable
         document.getElementById('tx-dlf-fulltextselection').setAttribute('contenteditable','false');
+        document.getElementById('tx-dlf-editablefulltext-switch').classList.remove('active');
         $cText = "Make Fulltext uneditable";
     }
     document.getElementById('tx-dlf-editablefulltext-switch').title = $cText;
