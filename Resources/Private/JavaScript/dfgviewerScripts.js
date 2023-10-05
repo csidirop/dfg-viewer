@@ -194,7 +194,7 @@ $(document).ready(function() {
     // Parse OCR options submenu
     function parseMenu() {
         let ulid = $('#ocr-engine');
-        let menu = JSON.parse(Cookies.get('tx-dlf-ocrEngines')).ocrEngines;
+        let enginesData = JSON.parse(Cookies.get('tx-dlf-ocrEngines')).ocrEngines;
         /* Expected scheme:
         {
             "menu":[
@@ -210,16 +210,16 @@ $(document).ready(function() {
         let ocrEngine = Cookies.get('tx-dlf-ocrEngine');
         let active = '';
 
-        for (let i=0; i<menu.length; i++) {
+        for (let i=0; i<enginesData.length; i++) {
             // set class active if this element === ocrEngine:
-            active = ((menu[i].data === ocrEngine) ? ' active' : '');
+            active = ((enginesData[i].data === ocrEngine) ? ' active' : '');
 
             $(ulid).append('<li class="subli">'
-                    + '<a id="ocr-on-demand-id-' + menu[i].data + '" class="' + menu[i].class + active + '" href="#" data-engine="'  + menu[i].data + '">'
-                    + menu[i][lang] + '<i class="checks" aria-hidden="true"></i></a></li>');
+                    + '<a id="ocr-on-demand-id-' + enginesData[i].data + '" class="' + enginesData[i].class + active + '" href="#" data-engine="'  + enginesData[i].data + '">'
+                    + enginesData[i][lang] + '<i class="checks" aria-hidden="true"></i></a></li>');
 
             // add class active to subelement store selected engine in cookie:
-            $('#ocr-on-demand-id-' + menu[i].data).on(mobileEvent, function(event) {
+            $('#ocr-on-demand-id-' + enginesData[i].data).on(mobileEvent, function(event) {
                 $('.subli a').removeClass('active');
                 $(this).addClass('active');
 
