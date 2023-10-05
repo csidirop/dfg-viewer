@@ -214,7 +214,7 @@ $(document).ready(function() {
             // set class active if this element === ocrEngine:
             active = ((menu[i].data === ocrEngine) ? ' active' : '');
 
-            let li = $(ulid).append('<li class="subli">'
+            $(ulid).append('<li class="subli">'
                     + '<a id="ocr-on-demand-id-' + menu[i].data + '" class="' + menu[i].class + active + '" href="#" data-engine="'  + menu[i].data + '">'
                     + menu[i][lang] + '<i class="checks" aria-hidden="true"></i></a></li>');
 
