@@ -211,11 +211,11 @@ $(document).ready(function() {
         let active = '';
 
         for (let i=0; i<enginesData.length; i++) {
-            // set class active if this element === ocrEngine:
-            active = ((enginesData[i].data === ocrEngine) ? ' active' : '');
+            active = ((enginesData[i].data === ocrEngine) ? ' active' : ''); // set class active if this element === ocrEngine
+            present = ((enginesData[i].avail === "Y") ? ' present' : ''); // set class present if server sents cookie
 
             $(ulid).append('<li class="subli">'
-                    + '<a id="ocr-on-demand-id-' + enginesData[i].data + '" class="' + enginesData[i].class + active + '" href="#" data-engine="'  + enginesData[i].data + '">'
+                    + '<a id="ocr-on-demand-id-' + enginesData[i].data + '" class="' + enginesData[i].class + active + present + '" href="#" data-engine="'  + enginesData[i].data + '">'
                     + enginesData[i][lang] + '<i class="checks" aria-hidden="true"></i></a></li>');
 
             // add class active to subelement store selected engine in cookie:
