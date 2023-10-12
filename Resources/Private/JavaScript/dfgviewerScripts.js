@@ -231,6 +231,11 @@ $(document).ready(function() {
         }
     }
     parseMenu();
+
+    // make editableFulltext button invisible if there is no fulltext available:
+    if ($('.no-fulltext')[0]) {
+        $('#tx-dlf-editablefulltext-switch').addClass('hidden');
+    }
 });
 
 $(document).keyup(function(e) {
