@@ -376,6 +376,8 @@
     #ocr-engine {
         margin-right: 0;
         padding-right: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
 
         li.subli {
             width: 100%;
@@ -385,19 +387,13 @@
                 width: 100%;
 
                 &.tesseract {
-                    &:before {
-                        background: url('../Images/OCR-Engines-Tesseract-white.svg') no-repeat 0 0;
-                    }
+                        .ocr-engine-setup('../Images/OCR-Engines-Tesseract-white.svg');
                 }
                 &.OCRD {
-                    &:before {
-                        background: url('../Images/OCR-Engines-OCRD-white.svg') no-repeat 0 0;
-                    }
+                        .ocr-engine-setup('../Images/OCR-Engines-OCRD-white.svg');
                 }
                 &.kraken {
-                    &:before {
-                        background: url('../Images/OCR-Engines-Kraken-white.svg') no-repeat 0 0;
-                    }
+                        .ocr-engine-setup('../Images/OCR-Engines-Kraken-white.svg');
                 }
 
                 &.active {
@@ -417,10 +413,10 @@
                     }
                 }
 
-                &.present:after {
+                &.present::before {
                     position: absolute;
                     top: 2px;
-                    right: 225px;
+                    left: 4px;
                     width: 8px;
                     height: 8px;
                     border-radius: 8px;
@@ -429,6 +425,35 @@
                     display: block;
                     content: " ";
                 }
+
+                &.present:hover::after {
+                    content: "Fulltext available";
+                    position: absolute;
+                    z-index: 1;
+                    top: -12px;
+                    left: 16px;
+                    background-color: transparent;
+                    padding-right: 5px;
+                    padding-left: 5px;
+                    border-radius: 261px;
+                    color: @okay-green;
+                    text-shadow:
+                        -1px -1px 0 @base-blue,  /* top-left */
+                        1px -1px 0 @base-blue,   /* top-right */
+                        -1px 1px 0 @base-blue,   /* bottom-left */
+                        1px 1px 0 @base-blue;    /* bottom-right */
+                }
+            }
+        }
+
+        // function for setting all ocr settings:
+        .ocr-engine-setup(@bgImage) {
+            background: url(@bgImage) no-repeat 0 0;
+            &:hover{
+                background-color: rgba(255,255,255,0.2);
+            }
+            &::before{ // overwrite parent
+                background: none;
             }
         }
     }
