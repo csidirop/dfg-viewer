@@ -425,6 +425,24 @@
                     display: block;
                     content: " ";
                 }
+
+                &.present:hover::after {
+                    content: "Fulltext available";
+                    position: absolute;
+                    z-index: 1;
+                    top: -12px;
+                    left: 16px;
+                    background-color: transparent;
+                    padding-right: 5px;
+                    padding-left: 5px;
+                    border-radius: 261px;
+                    color: @okay-green;
+                    text-shadow:
+                        -1px -1px 0 @base-blue,  /* top-left */
+                        1px -1px 0 @base-blue,   /* top-right */
+                        -1px 1px 0 @base-blue,   /* bottom-left */
+                        1px 1px 0 @base-blue;    /* bottom-right */
+                }
             }
         }
 
