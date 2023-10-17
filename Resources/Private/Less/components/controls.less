@@ -387,19 +387,13 @@
                 width: 100%;
 
                 &.tesseract {
-                    &:before {
-                        background: url('../Images/OCR-Engines-Tesseract-white.svg') no-repeat 0 0;
-                    }
+                        .ocr-engine-setup('../Images/OCR-Engines-Tesseract-white.svg');
                 }
                 &.OCRD {
-                    &:before {
-                        background: url('../Images/OCR-Engines-OCRD-white.svg') no-repeat 0 0;
-                    }
+                        .ocr-engine-setup('../Images/OCR-Engines-OCRD-white.svg');
                 }
                 &.kraken {
-                    &:before {
-                        background: url('../Images/OCR-Engines-Kraken-white.svg') no-repeat 0 0;
-                    }
+                        .ocr-engine-setup('../Images/OCR-Engines-Kraken-white.svg');
                 }
 
                 &.active {
@@ -419,10 +413,10 @@
                     }
                 }
 
-                &.present:after {
+                &.present::before {
                     position: absolute;
                     top: 2px;
-                    right: 225px;
+                    left: 4px;
                     width: 8px;
                     height: 8px;
                     border-radius: 8px;
@@ -431,6 +425,17 @@
                     display: block;
                     content: " ";
                 }
+            }
+        }
+
+        // function for setting all ocr settings:
+        .ocr-engine-setup(@bgImage) {
+            background: url(@bgImage) no-repeat 0 0;
+            &:hover{
+                background-color: rgba(255,255,255,0.2);
+            }
+            &::before{ // overwrite parent
+                background: none;
             }
         }
     }
