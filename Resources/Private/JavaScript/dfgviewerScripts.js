@@ -285,4 +285,3 @@ function close_all_submenus(environment = '') {
         $('nav ul.viewer-nav').removeClass('open');
     };
 }
-// EOF
