@@ -210,7 +210,21 @@ $(document).ready(function() {
         let ocrEngine = Cookies.get('tx-dlf-ocrEngine');
         let active = '';
 
-        for (let i=0; i<enginesData.length; i++) {
+        // Set listelemt for remote fulltext:
+        if(Cookies.get('tx-dlf-ocr-remotepresent') === "Y"){
+            active = (("originalremote" === ocrEngine) ? ' active' : ''); // set class active if this remote is active
+            $(ulid).append('<li class="subli"> <a id="ocr-on-demand-id-originalremote" class="originalremote ' + active + ' present"> <i>Orignal fulltext</i> <i class="checks" aria-hidden="true"></i></a></li>');
+            
+            // add class active to subelement and store selected engine in cookie:
+            $('#ocr-on-demand-id-originalremote').on(mobileEvent, function(event) {
+                $('.subli a').removeClass('active');
+                $(this).addClass('active');
+                Cookies.set('tx-dlf-ocrEngine', "originalremote", { sameSite: 'lax' }); // store in cookie
+            });
+        }
+
+        // Set all other listelements:
+        for (let i=0; i<=enginesData.length; i++) {
             active = ((enginesData[i].data === ocrEngine) ? ' active' : ''); // set class active if this element === ocrEngine
             present = ((enginesData[i].avail === "Y") ? ' present' : ''); // set class present if server sents cookie
 
@@ -218,15 +232,11 @@ $(document).ready(function() {
                     + '<a id="ocr-on-demand-id-' + enginesData[i].data + '" class="' + enginesData[i].class + active + present + '" href="#" data-engine="'  + enginesData[i].data + '">'
                     + enginesData[i][lang] + '<i class="checks" aria-hidden="true"></i></a></li>');
 
-            // add class active to subelement store selected engine in cookie:
+            // add class active to subelement and store selected engine in cookie:
             $('#ocr-on-demand-id-' + enginesData[i].data).on(mobileEvent, function(event) {
                 $('.subli a').removeClass('active');
                 $(this).addClass('active');
-
-                // get the selected engine:
-                let engine = this.dataset.engine;
-                // store in cookie:
-                Cookies.set('tx-dlf-ocrEngine', engine, { sameSite: 'lax' });
+                Cookies.set('tx-dlf-ocrEngine', this.dataset.engine, { sameSite: 'lax' }); // store in cookie
             });
         }
     }
