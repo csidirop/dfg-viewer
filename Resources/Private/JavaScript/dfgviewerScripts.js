@@ -214,6 +214,7 @@ $(document).ready(function() {
         if (Cookies.get('tx-dlf-ocr-remotepresent') === "Y") {
             active = ((ocrEngine === "originalremote") ? ' active' : ''); // set class active if this remote is active
             $(ulid).append('<li class="subli"> <a id="ocr-on-demand-id-originalremote" class="originalremote ' + active + ' present"> <i>Orignal fulltext</i> <i class="checks" aria-hidden="true"></i></a></li>');
+            $(ulid).append('<hr>'); // Add a dividing line
 
             // add class active to subelement and store selected engine in cookie:
             $('#ocr-on-demand-id-originalremote').on(mobileEvent, function(event) {
