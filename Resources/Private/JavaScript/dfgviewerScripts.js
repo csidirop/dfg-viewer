@@ -210,7 +210,7 @@ $(document).ready(function() {
             active = ((ocrEngine === "originalremote") ? ' active' : ''); // set class active if this remote is active
 
             // Build element:
-            $(ulid).append('<li class="subli"> <a id="ocr-on-demand-id-originalremote" class="originalremote ' + active + ' present"> <i>Orignal fulltext</i> <i class="checks" aria-hidden="true"></i></a></li>');
+            $(ulid).append('<li class="subli"> <a id="ocr-on-demand-id-originalremote" class="originalremote ' + active + ' present"> <i>Original fulltext</i> <i class="checks" aria-hidden="true"></i></a></li>');
             $(ulid).append('<hr>'); // Add a dividing line
 
             if (active.length != 0) {
