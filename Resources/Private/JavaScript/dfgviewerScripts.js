@@ -216,11 +216,15 @@ $(document).ready(function() {
             $(ulid).append('<li class="subli"> <a id="ocr-on-demand-id-originalremote" class="originalremote ' + active + ' present"> <i>Orignal fulltext</i> <i class="checks" aria-hidden="true"></i></a></li>');
             $(ulid).append('<hr>'); // Add a dividing line
 
+            $('.ocr-create').addClass('disabled-item'); // deactivte OCR buttons
+
             // add class active to subelement and store selected engine in cookie:
             $('#ocr-on-demand-id-originalremote').on(mobileEvent, function(event) {
                 $('.subli a').removeClass('active');
                 $(this).addClass('active');
                 Cookies.set('tx-dlf-ocrEngine', "originalremote", { sameSite: 'lax' }); // store in cookie
+
+                $('.ocr-create').addClass('disabled-item'); // deactivte OCR buttons
             });
         }
 
@@ -238,6 +242,7 @@ $(document).ready(function() {
                 $('.subli a').removeClass('active');
                 $(this).addClass('active');
                 Cookies.set('tx-dlf-ocrEngine', this.dataset.engine, { sameSite: 'lax' }); // store in cookie
+                $('.ocr-create').removeClass('disabled-item'); // reactivte OCR buttons
             });
         }
     }

@@ -201,11 +201,23 @@
                                     background: url('../Images/PageOCR-white.svg') no-repeat 0 0 !important;
                                 }
                             }
+                            &.disabled-item {
+                                a {
+                                    opacity: 0.4; /* 40% opacity */
+                                    cursor: not-allowed; /* Show not-allowed cursor */
+                                }
+                            }
                         }
                         &.ocr-book {
                             a, span {
                                 &:before {
                                     background: url('../Images/BookOCR-white.svg') no-repeat 0 0 !important;
+                                }
+                            }
+                            &.disabled-item {
+                                a {
+                                    opacity: 0.4; /* 40% opacity */
+                                    cursor: not-allowed; /* Show not-allowed cursor */
                                 }
                             }
                         }
