@@ -186,13 +186,9 @@ $(document).ready(function() {
         close_all_submenus('all');
     });
 
-    function getLang() {
-        let lang = $('html').attr('lang').substr(0,2);
-        return(lang);
-    }
-
     // Parse OCR options submenu
-    function parseMenu() {
+    function parseOcrMenu() {
+        let lang = $('html').attr('lang').substr(0,2);
         let ulid = $('#ocr-engine');
         let enginesData = JSON.parse(Cookies.get('tx-dlf-ocrEngines')).ocrEngines;
         /* Expected scheme:
@@ -203,34 +199,53 @@ $(document).ready(function() {
                 {"name": "Tess", "de": "Tess (de)", "en": "Tess (en)", "class": "tess", "data": "tess-basic"
                 }
         ]}
-        */
-        let lang = getLang();
+        */ 
 
         // get cookie for ocrEngine
         let ocrEngine = Cookies.get('tx-dlf-ocrEngine');
         let active = '';
 
-        for (let i=0; i<enginesData.length; i++) {
+        // Set listelement for remote fulltext (independent of the OCR engines):
+        if (Cookies.get('tx-dlf-ocr-remotepresent') === "Y") { // only if remote fulltext is present
+            active = ((ocrEngine === "originalremote") ? ' active' : ''); // set class active if this remote is active
+
+            // Build element:
+            $(ulid).append('<li class="subli"> <a id="ocr-on-demand-id-originalremote" class="originalremote ' + active + ' present"> <i>Original fulltext</i> <i class="checks" aria-hidden="true"></i></a></li>');
+            $(ulid).append('<hr>'); // Add a dividing line
+
+            if (active.length != 0) {
+                $('.ocr-create').addClass('disabled-item'); // deactivte OCR buttons
+            }
+
+            // add class active to subelement, store info in cookie and deactivate OCR buttons:
+            $('#ocr-on-demand-id-originalremote').on(mobileEvent, function(event) {
+                $('.subli a').removeClass('active');
+                $(this).addClass('active');
+                Cookies.set('tx-dlf-ocrEngine', "originalremote", { sameSite: 'lax' }); // store in cookie
+                $('.ocr-create').addClass('disabled-item');
+            });
+        }
+
+        // Set all other listelements (depending on the OCR engines):
+        for (let i=0; i<=enginesData.length; i++) {
             active = ((enginesData[i].data === ocrEngine) ? ' active' : ''); // set class active if this element === ocrEngine
             present = ((enginesData[i].avail === "Y") ? ' present' : ''); // set class present if server sents cookie
 
+            // Build element:
             $(ulid).append('<li class="subli">'
                     + '<a id="ocr-on-demand-id-' + enginesData[i].data + '" class="' + enginesData[i].class + active + present + '" href="#" data-engine="'  + enginesData[i].data + '">'
                     + enginesData[i][lang] + '<i class="checks" aria-hidden="true"></i></a></li>');
 
-            // add class active to subelement store selected engine in cookie:
+            // add class active to subelement, store selected engine in cookie and reactivate OCR buttons:
             $('#ocr-on-demand-id-' + enginesData[i].data).on(mobileEvent, function(event) {
                 $('.subli a').removeClass('active');
                 $(this).addClass('active');
-
-                // get the selected engine:
-                let engine = this.dataset.engine;
-                // store in cookie:
-                Cookies.set('tx-dlf-ocrEngine', engine, { sameSite: 'lax' });
+                Cookies.set('tx-dlf-ocrEngine', this.dataset.engine, { sameSite: 'lax' }); // store in cookie
+                $('.ocr-create').removeClass('disabled-item');
             });
         }
     }
-    parseMenu();
+    parseOcrMenu();
 });
 
 $(document).keyup(function(e) {
