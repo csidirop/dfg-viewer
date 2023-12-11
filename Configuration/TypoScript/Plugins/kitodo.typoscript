@@ -178,7 +178,7 @@ plugin.tx_dlf_imagemanipulationtool {
 plugin.tx_dlf_pdfdownloadtool < plugin.tx_dlf_toolbox
 plugin.tx_dlf_pdfdownloadtool {
     settings {
-        tools = pdfdownloadtool
+        tools = pdfdownloadtool,updatedMetsdownloadtool
     }
 }
 
