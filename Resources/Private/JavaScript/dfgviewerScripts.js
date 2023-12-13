@@ -227,7 +227,7 @@ $(document).ready(function() {
         }
 
         // Set all other listelements (depending on the OCR engines):
-        for (let i=0; i<=enginesData.length; i++) {
+        for (let i=0; i<enginesData.length; i++) {
             active = ((enginesData[i].data === ocrEngine) ? ' active' : ''); // set class active if this element === ocrEngine
             present = ((enginesData[i].avail === "Y") ? ' present' : ''); // set class present if server sents cookie
 
