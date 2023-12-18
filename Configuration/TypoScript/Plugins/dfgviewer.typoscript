@@ -22,6 +22,12 @@ plugin.tx_dfgviewer_uri {
     }
 }
 
+plugin.tx_TESTTEST < tt_content.list.20.TESTTEST
+plugin.tx_TESTTEST {
+    settings {
+    }
+}
+
 plugin.tx_dfgviewer_newspaperyears < tt_content.list.20.dlf_calendar
 plugin.tx_dfgviewer_newspaperyears {
     switchableControllerActions {

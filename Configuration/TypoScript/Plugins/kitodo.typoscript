@@ -152,6 +152,12 @@ lib.kitodo.navigation.viewfunction {
 # pdfdownloadtool
 # searchindocumenttool
 
+plugin.tx_TESTTEST < tt_content.list.20.TESTTEST
+plugin.tx_TESTTEST {
+    settings {
+    }
+}
+
 plugin.tx_dlf_toolbox < tt_content.list.20.dlf_toolbox
 plugin.tx_dlf_toolbox {
     settings {
