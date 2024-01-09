@@ -44,8 +44,8 @@
   "license": "GPL-3.0-or-later",
   "require": {
     "typo3/cms-core": "~9.5.31|^10.4",
-    "ub-mannheim/presentation": "dev-4.x-ocr",
-    "ub-mannheim/ubma-digitalcollections": "dev-slubmaster"
+    "ub-mannheim/presentation": "dev-4.x-ocr#f0ec63620642601ca77cdd33552908452eaed17e",
+    "ub-mannheim/ubma-digitalcollections": "dev-slubmaster#9618b46518ad6dd7786afe28db91814e70baf275"
   },
   "autoload": {
     "psr-4": {
