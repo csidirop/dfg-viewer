@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="-285 377 40 40" style="enable-background:new -285 377 40 40;" xml:space="preserve">
+<style type="text/css">
+	.st0{display:none;fill:#9B9B9B;}
+	.st1{fill:none;stroke:#FFFFFF;stroke-width:1.5;}
+	.st2{fill:none;}
+	.st3{fill:none;stroke:#F7F7F7;}
+</style>
+<rect id="BG" x="-285" y="377.1" class="st0" width="40" height="39.8"/>
+<g id="Ecken">
+	<path class="st1" d="M-276.8,390v-5h5.2"/>
+	<path class="st1" d="M-276.8,404v5h5.2"/>
+	<path class="st1" d="M-253.2,404v5h-5.2"/>
+	<path class="st1" d="M-253.2,390v-5h-5.2"/>
+</g>
+<path class="st2" d="M-264.5,388.1"/>
+<g id="TesseractPfad">
+	<line id="Verbindungspfad-rechts" class="st3" x1="-260.4" y1="399.3" x2="-256.4" y2="401.4"/>
+	<polygon id="Außenpfad" class="st3" points="-264.5,388.1 -272.6,392.4 -272.6,401.4 -264.5,405.7 -256.4,401.4 -256.4,392.4 	"/>
+	<polyline id="V-Pfad-oben" class="st3" points="-272.6,392.4 -268.6,394.7 -264.5,396.9 -260.4,394.7 -256.4,392.4 	"/>
+	<polygon id="Innenpfad" class="st3" points="-264.5,392.4 -268.6,394.7 -268.6,399.3 -264.5,401.3 -260.4,399.3 -260.4,394.7 	"/>
+	<line id="Verbindungspfad-oben" class="st3" x1="-264.5" y1="388.1" x2="-264.5" y2="392.4"/>
+	<line id="Verbindungspfad-mitte-unten" class="st3" x1="-264.5" y1="396.9" x2="-264.5" y2="405.7"/>
+	<line id="Verbindungspfad-links" class="st3" x1="-268.6" y1="399.3" x2="-272.6" y2="401.4"/>
+</g>
+</svg>

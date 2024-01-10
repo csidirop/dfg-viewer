@@ -1,8 +1,8 @@
 {
-  "name": "slub/dfgviewer",
+  "name": "ub-mannheim/dfgviewer",
   "type": "typo3-cms-extension",
-  "description": "Remote resources navigator for digital libraries. Reads METS/MODS and METS/TEI via OAI-PMH.",
-  "homepage": "https://github.com/slub/dfg-viewer",
+  "description": "Remote resources navigator for digital libraries. Reads METS/MODS and METS/TEI via OAI-PMH..",
+  "homepage": "https://github.com/UB-Mannheim/dfg-viewer",
   "keywords": [
     "TYPO3",
     "extension",
@@ -33,13 +33,19 @@
       "name": "Erik Konrad",
       "email": "typo3@slub-dresden.de",
       "role": "Developer"
+    },
+    {
+      "name": "Christos Sidiropoulos",
+      "email": "christos.sidiropoulos@uni-mannheim.de",
+      "homepage": "https://www.bib.uni-mannheim.de",
+      "role": "Developer"
     }
   ],
   "license": "GPL-3.0-or-later",
   "require": {
     "typo3/cms-core": "^10.4.36|^11.5.30",
-    "kitodo/presentation": "^4.0|dev-master",
-    "slub/slub-digitalcollections": "^3.0|dev-master"
+    "ub-mannheim/presentation": "dev-4.x-ocr#f0ec63620642601ca77cdd33552908452eaed17e",
+    "ub-mannheim/ubma-digitalcollections": "dev-slubmaster#9618b46518ad6dd7786afe28db91814e70baf275"
   },
   "autoload": {
     "psr-4": {

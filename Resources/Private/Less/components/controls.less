@@ -174,14 +174,70 @@
                     }
                 }
             }
+            &.links {
+                > a, > span {
+                    background-position: 0px 0;
+                }
+            }
             &.downloads {
                 > a, > span {
                     background-position: -40px 0;
                 }
             }
             &.fulltext {
+                span.fulltext {
+                    a.select {
+                        &.active:before {
+                            position: absolute;
+                            top: 2px;
+                            right: 0px;
+                            width: 8px;
+                            height: 8px;
+                            border-radius: 8px;
+                            border: 2px solid #fff;
+                            background: @okay-green;
+                            display: block;
+                            content: " ";
+                        }
+                    }
+                }
                 > a, > span {
                     background-position: -120px 0;
+                }
+            }
+            &.ocr-on-demand {
+                > a, > span {
+                    background: #fff url("../Images/PageOCR.svg") no-repeat 0 0 !important;
+                }
+                > ul {
+                    li {
+                        &.ocr-page {
+                            a, span {
+                                &:before {
+                                    background: url('../Images/PageOCR-white.svg') no-repeat 0 0 !important;
+                                }
+                            }
+                            &.disabled-item {
+                                a {
+                                    opacity: 0.4; /* 40% opacity */
+                                    cursor: not-allowed; /* Show not-allowed cursor */
+                                }
+                            }
+                        }
+                        &.ocr-book {
+                            a, span {
+                                &:before {
+                                    background: url('../Images/BookOCR-white.svg') no-repeat 0 0 !important;
+                                }
+                            }
+                            &.disabled-item {
+                                a {
+                                    opacity: 0.4; /* 40% opacity */
+                                    cursor: not-allowed; /* Show not-allowed cursor */
+                                }
+                            }
+                        }
+                    }
                 }
             }
             &.doublepage {
@@ -223,24 +279,6 @@
                         border: 8px solid transparent;
                         border-width: 5px 0 5px 8px;
                         border-left-color: @base-blue;
-                    }
-                }
-            }
-            &.fulltext {
-                span.fulltext {
-                    a.select {
-                        &.active:before {
-                            position: absolute;
-                            top: 2px;
-                            right: 0px;
-                            width: 8px;
-                            height: 8px;
-                            border-radius: 8px;
-                            border: 2px solid #fff;
-                            background: @okay-green;
-                            display: block;
-                            content: " ";
-                        }
                     }
                 }
             }
@@ -318,6 +356,138 @@
         }
         @media screen and (min-width: @desktopViewportWidth) {
             left: 124px;
+        }
+    }
+}
+
+/* ==============[ OCR-on-Demand Settings Submenu ]===================== */
+.subsubmenu.ocr-on-demand-sub {
+    > a {
+        &#ocr-menu {
+            &:before {
+                padding-right: 30px;
+                background: url('../Images/OCR-Options-white.svg') no-repeat 0 0;
+            }
+        }
+
+        &:after {
+            content: "+";
+            margin-left: 8px;
+            position: absolute;
+            right: 10px;
+            left: auto;
+        }
+    }
+
+    &.open {
+        > a:after {
+            content: "⌄";
+        }
+    }
+
+    ul.subunter {
+        position: absolute;
+        //left: 104%;     // outside main box
+        left: 90%;      // overlap with main box
+        right: auto;
+        background: fade(@base-blue,90%);
+        display: none;
+        top: auto;
+    }
+
+    &.open {
+        ul.subunter {
+            display: list-item;
+        }
+    }
+
+    #ocr-engine {
+        margin-right: 0;
+        padding-right: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        li.subli {
+            width: 100%;
+            margin-right: 30px;
+
+            a {
+                width: 100%;
+
+                // OCR-Engine Icons:
+                &.originalremote {
+                    .ocr-engine-setup('../Images/OCR-FT-remote-white.svg');
+                }
+                &.tesseract {
+                    .ocr-engine-setup('../Images/OCR-Engines-Tesseract-white.svg');
+                }
+                &.OCRD {
+                    .ocr-engine-setup('../Images/OCR-Engines-OCRD-white.svg');
+                }
+                &.kraken {
+                    .ocr-engine-setup('../Images/OCR-Engines-Kraken-white.svg');
+                }
+
+                // OCR-Engine states:
+                &.active {
+                    i.checks {
+                        margin-left: 10px;
+
+                        &:before {
+                            position: absolute;
+                            top: 0;
+                            left: auto;
+                            right: 0;
+                            width: 40px;
+                            height: 40px;
+                            content: '';
+                            background: url('../Images/checks.svg') no-repeat 0 0;
+                        }
+                    }
+                }
+
+                &.present::before {
+                    position: absolute;
+                    top: 2px;
+                    left: 4px;
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 8px;
+                    border: 2px solid #fff;
+                    background: @okay-green;
+                    display: block;
+                    content: " ";
+                }
+
+                &.present:hover::after {
+                    content: "Fulltext available";
+                    position: absolute;
+                    z-index: 1;
+                    top: -12px;
+                    left: 16px;
+                    background-color: transparent;
+                    padding-right: 5px;
+                    padding-left: 5px;
+                    border-radius: 261px;
+                    color: @okay-green;
+                    text-shadow:
+                        -1px -1px 0 @base-blue,  /* top-left */
+                        1px -1px 0 @base-blue,   /* top-right */
+                        -1px 1px 0 @base-blue,   /* bottom-left */
+                        1px 1px 0 @base-blue;    /* bottom-right */
+                }
+            }
+        }
+
+        // function for setting all ocr settings:
+        .ocr-engine-setup(@bgImage) {
+            background: url(@bgImage) no-repeat 0 0;
+            &:hover{
+                background-color: rgba(255,255,255,0.2);
+            }
+            &::before{ // overwrite parent
+                background: none;
+            }
         }
     }
 }
