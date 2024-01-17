@@ -45,7 +45,7 @@
   "require": {
     "typo3/cms-core": "^10.4.36|^11.5.30",
     "ub-mannheim/presentation": "dev-4.x-ocr-devel",
-    "ub-mannheim/ubma-digitalcollections": "dev-slubmaster"
+    "ub-mannheim/ubma-digitalcollections": "dev-slubmaster-devel"
   },
   "autoload": {
     "psr-4": {
