@@ -174,7 +174,7 @@ plugin.tx_dlf_fulltexttool {
     settings {
         tools = fulltexttool
         activateFullTextInitially = 0
-        fullTextScrollElement = html, body
+        fullTextScrollElement = #tx-dlf-fulltextselection
     }
 }
 
@@ -225,12 +225,5 @@ page.10.variables {
 page.10.variables {
   isNewspaper = TEXT
   isNewspaper.value = newspaper_issue
-}
-[END]
-
-[getDocumentType({$config.storagePid}) == "object"]
-page.10.variables {
-  isObject3D = TEXT
-  isObject3D.value = object
 }
 [END]
