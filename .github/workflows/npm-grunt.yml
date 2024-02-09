@@ -2,9 +2,9 @@ name: GruntComparison
 
 on:
   push:
-    branches: [ "master", "6.x-ocr" ]
+    branches: [ "master", "6.x-ocr", "6.x-ocr-devel" ]
   pull_request:
-    branches: [ "master", "6.x-ocr" ]
+    branches: [ "master", "6.x-ocr", "6.x-ocr-devel" ]
 
 jobs:
   build:
