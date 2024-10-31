@@ -9,8 +9,8 @@
 			<packager_username>test</packager_username>
 			<packager_name></packager_name>
 			<packager_email></packager_email>
-			<TYPO3_version>10.4.38-dev</TYPO3_version>
-			<created>Tuesday  9. April 2024</created>
+			<TYPO3_version>11.5.42-dev</TYPO3_version>
+			<created>Thursday 31. October 2024</created>
 		</meta>
 		<static_tables index="relStaticTables" type="array"></static_tables>
 		<excludeMap type="array"></excludeMap>
@@ -108,8 +108,8 @@
 			<fieldlist index="data" type="array">
 				<field index="uid" type="integer">1</field>
 				<field index="pid" type="integer">0</field>
-				<field index="tstamp" type="integer">1712667258</field>
-				<field index="crdate" type="integer">1712667258</field>
+				<field index="tstamp" type="integer">1730384702</field>
+				<field index="crdate" type="integer">1730384702</field>
 				<field index="cruser_id" type="integer">2</field>
 				<field index="deleted" type="integer">0</field>
 				<field index="hidden" type="integer">0</field>
@@ -129,9 +129,6 @@
 				<field index="t3ver_wsid" type="integer">0</field>
 				<field index="t3ver_state" type="integer">0</field>
 				<field index="t3ver_stage" type="integer">0</field>
-				<field index="t3ver_count" type="integer">0</field>
-				<field index="t3ver_tstamp" type="integer">0</field>
-				<field index="t3ver_move_id" type="integer">0</field>
 				<field index="perms_userid" type="integer">2</field>
 				<field index="perms_groupid" type="integer">0</field>
 				<field index="perms_user" type="integer">31</field>
@@ -173,7 +170,7 @@
 				<field index="backend_layout"></field>
 				<field index="backend_layout_next_level"></field>
 				<field index="tsconfig_includes">EXT:dfgviewer/Configuration/TsConfig/Page.ts</field>
-				<field index="legacy_overlay_uid" type="integer">0</field>
+				<field index="categories" type="integer">0</field>
 				<field index="tx_impexp_origuid" type="integer">1</field>
 				<field index="seo_title"></field>
 				<field index="no_index" type="integer">0</field>
@@ -188,7 +185,6 @@
 				<field index="canonical_link"></field>
 				<field index="sitemap_priority">0.5</field>
 				<field index="sitemap_changefreq"></field>
-				<field index="categories" type="integer">0</field>
 			</fieldlist>
 			<related index="rels" type="array">
 				<field index="tsconfig_includes" type="array">
@@ -208,8 +204,8 @@
 			<fieldlist index="data" type="array">
 				<field index="uid" type="integer">1</field>
 				<field index="pid" type="integer">1</field>
-				<field index="tstamp" type="integer">1712667258</field>
-				<field index="crdate" type="integer">1712667258</field>
+				<field index="tstamp" type="integer">1730384702</field>
+				<field index="crdate" type="integer">1730384702</field>
 				<field index="cruser_id" type="integer">2</field>
 				<field index="deleted" type="integer">0</field>
 				<field index="hidden" type="integer">0</field>
@@ -222,11 +218,7 @@
 				<field index="t3ver_wsid" type="integer">0</field>
 				<field index="t3ver_state" type="integer">0</field>
 				<field index="t3ver_stage" type="integer">0</field>
-				<field index="t3ver_count" type="integer">0</field>
-				<field index="t3ver_tstamp" type="integer">0</field>
-				<field index="t3ver_move_id" type="integer">0</field>
 				<field index="title">Main TypoScript Rendering</field>
-				<field index="sitetitle">DFG-Viewer</field>
 				<field index="root" type="integer">1</field>
 				<field index="clear" type="integer">3</field>
 				<field index="include_static_file">EXT:fluid_styled_content/Configuration/TypoScript/,EXT:dlf/Configuration/TypoScript/,EXT:dfgviewer/Configuration/TypoScript</field>
@@ -266,8 +258,8 @@ config.kitodoPageView = 2</field>
 			<fieldlist index="data" type="array">
 				<field index="uid" type="integer">2</field>
 				<field index="pid" type="integer">1</field>
-				<field index="tstamp" type="integer">1712667258</field>
-				<field index="crdate" type="integer">1712667258</field>
+				<field index="tstamp" type="integer">1730384702</field>
+				<field index="crdate" type="integer">1730384702</field>
 				<field index="cruser_id" type="integer">2</field>
 				<field index="deleted" type="integer">0</field>
 				<field index="hidden" type="integer">0</field>
@@ -287,9 +279,6 @@ config.kitodoPageView = 2</field>
 				<field index="t3ver_wsid" type="integer">0</field>
 				<field index="t3ver_state" type="integer">0</field>
 				<field index="t3ver_stage" type="integer">0</field>
-				<field index="t3ver_count" type="integer">0</field>
-				<field index="t3ver_tstamp" type="integer">0</field>
-				<field index="t3ver_move_id" type="integer">0</field>
 				<field index="perms_userid" type="integer">2</field>
 				<field index="perms_groupid" type="integer">0</field>
 				<field index="perms_user" type="integer">31</field>
@@ -331,7 +320,7 @@ config.kitodoPageView = 2</field>
 				<field index="backend_layout"></field>
 				<field index="backend_layout_next_level"></field>
 				<field index="tsconfig_includes"></field>
-				<field index="legacy_overlay_uid" type="integer">0</field>
+				<field index="categories" type="integer">0</field>
 				<field index="tx_impexp_origuid" type="integer">2</field>
 				<field index="seo_title"></field>
 				<field index="no_index" type="integer">0</field>
@@ -346,7 +335,6 @@ config.kitodoPageView = 2</field>
 				<field index="canonical_link"></field>
 				<field index="sitemap_priority">0.5</field>
 				<field index="sitemap_changefreq"></field>
-				<field index="categories" type="integer">0</field>
 			</fieldlist>
 			<related index="rels" type="array"></related>
 		</tablerow>
@@ -354,8 +342,8 @@ config.kitodoPageView = 2</field>
 			<fieldlist index="data" type="array">
 				<field index="uid" type="integer">3</field>
 				<field index="pid" type="integer">1</field>
-				<field index="tstamp" type="integer">1712667258</field>
-				<field index="crdate" type="integer">1712667258</field>
+				<field index="tstamp" type="integer">1730384702</field>
+				<field index="crdate" type="integer">1730384702</field>
 				<field index="cruser_id" type="integer">2</field>
 				<field index="deleted" type="integer">0</field>
 				<field index="hidden" type="integer">0</field>
@@ -375,9 +363,6 @@ config.kitodoPageView = 2</field>
 				<field index="t3ver_wsid" type="integer">0</field>
 				<field index="t3ver_state" type="integer">0</field>
 				<field index="t3ver_stage" type="integer">0</field>
-				<field index="t3ver_count" type="integer">0</field>
-				<field index="t3ver_tstamp" type="integer">0</field>
-				<field index="t3ver_move_id" type="integer">0</field>
 				<field index="perms_userid" type="integer">2</field>
 				<field index="perms_groupid" type="integer">0</field>
 				<field index="perms_user" type="integer">31</field>
@@ -419,7 +404,7 @@ config.kitodoPageView = 2</field>
 				<field index="backend_layout"></field>
 				<field index="backend_layout_next_level"></field>
 				<field index="tsconfig_includes"></field>
-				<field index="legacy_overlay_uid" type="integer">0</field>
+				<field index="categories" type="integer">0</field>
 				<field index="tx_impexp_origuid" type="integer">3</field>
 				<field index="seo_title"></field>
 				<field index="no_index" type="integer">0</field>
@@ -434,7 +419,6 @@ config.kitodoPageView = 2</field>
 				<field index="canonical_link"></field>
 				<field index="sitemap_priority">0.5</field>
 				<field index="sitemap_changefreq"></field>
-				<field index="categories" type="integer">0</field>
 			</fieldlist>
 			<related index="rels" type="array"></related>
 		</tablerow>
